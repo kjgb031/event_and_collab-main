@@ -6,7 +6,7 @@
 
 @section('content')
     <main class="container flex items-center justify-center min-h-screen mx-auto">
-        <div class="flex flex-col items-center justify-center max-w-xl px-6 py-12 mx-auto bg-white shadow-md rounded-lg">
+        <div class="flex flex-col items-center justify-center max-w-xl px-6 py-12 mx-auto bg-white rounded-lg shadow-md">
             <img src="/logo.png" alt="Student organization collaboration and events management">
             <form class="grid w-full grid-cols-1 gap-2 md:grid-cols-2" method="POST" action="{{ route('student.store') }}">
                 @csrf
@@ -90,7 +90,7 @@
                                 "Animal Production"
                             ],
                             "Bachelor of Science in Agricultural and Biosystems Engineering": ["Not Applicable"]
-                        }
+                        },
                     },
 
                     //Balanga
@@ -221,8 +221,8 @@
                                 "Garments, Fashion and Design", "Heating, Ventilating and Air Conditioning Technology",
                                 "Mechanical Technology", "Welding and Fabrication Technology"
                             ]
-                        },
-                    }
+                        }
+                    },
 
                     "Orani": {
                         "colleges": ["College of Agriculture and Fisheries", "College of Education"],
