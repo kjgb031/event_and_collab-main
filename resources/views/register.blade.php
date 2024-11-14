@@ -30,7 +30,9 @@
                 <x-text-input name="guardian_name" label="Guardian Name" type="text" required />
                 <x-text-input name="guardian_contact" label="Guardian Contact" type="text" required />
                 <hr class="md:col-span-2">
-                <select name="campus" id="campus" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
+                <!-- Campus select field -->
+                <select name="campus" id="campus"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
                     <option value="">Select Campus</option>
                     <option value="Abucay">Abucay</option>
                     <option value="Balanga">Balanga</option>
@@ -39,83 +41,235 @@
                     <option value="Main">Main</option>
                     <option value="Orani">Orani</option>
                 </select>
-                {{-- college --}}
-                <select name="college" id="college" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
+
+                <!-- College select field (will be populated dynamically) -->
+                <select name="college" id="college"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
                     <option value="">Select College</option>
-                    <option value="College of Arts and Sciences">College of Arts and Sciences</option>
-                    <option value="College of Business and Accountancy">College of Business and Accountancy</option>
-                    <option value="College of Criminal Justice Education">College of Criminal Justice Education</option>
-                    <option value="College of Education">College of Education</option>
-                    <option value="College of Engineering">College of Engineering</option>
-                    <option value="College of Hospitality Management">College of Hospitality Management</option>
-                    <option value="College of Information Technology">College of Information Technology</option>
-                    <option value="College of Nursing">College of Nursing</option>
-                    <option value="College of Pharmacy">College of Pharmacy</option>
-                    <option value="College of Public Administration">College of Public Administration</option>
-                    <option value="College of Science">College of Science</option>
-                    <option value="College of Tourism and Hospitality Management">College of Tourism and Hospitality Management</option>
                 </select>
-                {{-- program --}}
-                <select name="program" id="program" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
+
+                <!-- Program select field (will be populated dynamically) -->
+                <select name="program" id="program"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
                     <option value="">Select Program</option>
-                    <option value="Bachelor of Arts in Communication">Bachelor of Arts in Communication</option>
-                    <option value="Bachelor of Arts in English">Bachelor of Arts in English</option>
-                    <option value="Bachelor of Arts in Political Science">Bachelor of Arts in Political Science</option>
-                    <option value="Bachelor of Arts in Psychology">Bachelor of Arts in Psychology</option>
-                    <option value="Bachelor of Science in Accountancy">Bachelor of Science in Accountancy</option>
-                    <option value="Bachelor of Science in Business Administration">Bachelor of Science in Business Administration</option>
-                    <option value="Bachelor of Science in Criminology">Bachelor of Science in Criminology</option>
-                    <option value="Bachelor of Science in Hospitality Management">Bachelor of Science in Hospitality Management</option>
-                    <option value="Bachelor of Science in Information Technology">Bachelor of Science in Information Technology</option>
-                    <option value="Bachelor of Science in Nursing">Bachelor of Science in Nursing</option>
-                    <option value="Bachelor of Science in Pharmacy">Bachelor of Science in Pharmacy</option>
-                    <option value="Bachelor of Science in Public Administration">Bachelor of Science in Public Administration</option>
-                    <option value="Bachelor of Science in Secondary Education">Bachelor of Science in Secondary Education</option>
-                    <option value="Bachelor of Science in Tourism Management">Bachelor of Science in Tourism Management</option>
-                    <option value="Bachelor of Science in Elementary Education">Bachelor of Science in Elementary Education</option>
-                    <option value="Bachelor of Science in Industrial Technology">Bachelor of Science in Industrial Technology</option>
-                    <option value="Bachelor of Science in Information Systems">Bachelor of Science in Information Systems</option>
-                    <option value="Bachelor of Science in Office Administration">Bachelor of Science in Office Administration</option>
-                    <option value="Bachelor of Science in Entrepreneurship">Bachelor of Science in Entrepreneurship</option>
-                    <option value="Bachelor of Science in Real Estate Management">Bachelor of Science in Real Estate Management</option>
-                    <option value="Bachelor of Science in Computer Science">Bachelor of Science in Computer Science</option>
                 </select>
-                {{-- major with NA option --}}
-                <select name="major" id="major" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
+
+                <!-- Major select field (will be populated dynamically) -->
+                <select name="major" id="major"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
                     <option value="">Select Major</option>
-                    <option value="N/A">N/A</option>
-                    <option value="General">General</option>
-                    <option value="Advertising">Advertising</option>
-                    <option value="Broadcasting">Broadcasting</option>
-                    <option value="Journalism">Journalism</option>
-                    <option value="Public Relations">Public Relations</option>
-                    <option value="Literature">Literature</option>
-                    <option value="Political Science">Political Science</option>
-                    <option value="Psychology">Psychology</option>
-                    <option value="Accountancy">Accountancy</option>
-                    <option value="Business Administration">Business Administration</option>
-                    <option value="Criminology">Criminology</option>
-                    <option value="Hospitality Management">Hospitality Management</option>
-                    <option value="Information Technology">Information Technology</option>
-                    <option value="Nursing">Nursing</option>
-                    <option value="Pharmacy">Pharmacy</option>
-                    <option value="Public Administration">Public Administration</option>
-                    <option value="Secondary Education">Secondary Education</option>
-                    <option value="Tourism Management">Tourism Management</option>
-                    <option value="Elementary Education">Elementary Education</option>
-                    <option value="Industrial Technology">Industrial Technology</option>
-                    <option value="Information Systems">Information Systems</option>
-                    <option value="Office Administration">Office Administration</option>
-                    <option value="Entrepreneurship">Entrepreneurship</option>
-                    <option value="Real Estate Management">Real Estate Management</option>
-                    <option value="Computer Science">Computer Science</option>
                 </select>
-                
+
                 <x-primary-button class="w-full md:col-span-2" type="submit">Sign-Up</x-primary-button>
                 <div class="mt-4 md:col-span-2">
-                   Have an account? <a href="{{ route('student.login') }}" class="font-bold">Login</a>
+                    Have an account? <a href="{{ route('student.login') }}" class="font-bold">Login</a>
                 </div>
             </form>
+
+            <script>
+                // Hardcoded campus data for demonstration purposes
+                const campusData = {
+
+                        //Abucay
+                        "Abucay": {
+                            "colleges": ["College of Agriculture and Fisheries ", "College of Education",
+                                "Institute Of Agricultural And Biosystems Engineering"
+                            ],
+
+                            "programs": {
+                                "College of Agriculture and Fisheries": ["Bachelor of Science in Agriculture"],
+                                "College of Education": ["Bachelor of Technical-Vocational Teacher Education"],
+                                "Institute Of Agricultural And Biosystems Engineering": [
+                                    "Bachelor of Science in Agricultural and Biosystems Engineering"
+                                ]
+                            },
+
+                            "majors": {
+                                "Bachelor of Science in Agriculture": ["Animal Science", "Crop Science"],
+                                "Bachelor of Technical-Vocational Teacher Education": ["Agricultural Crops Production",
+                                    "Animal Production"
+                                ],
+                                "Bachelor of Science in Agricultural and Biosystems Engineering": ["Not Applicable"]
+                            }
+                        },
+
+                        //Balanga
+                        "Balanga": {
+                            "colleges": ["College of Business and Accountancy", "College of Education",
+                                "College of Social and Behavioral Sciences", "Institute of Public Administration and Governance"
+                            ],
+
+                            "programs": {
+                                "College of Business and Accountancy": ["Bachelor of Science in Accountancy",
+                                    "Bachelor of Science in Business Administration"
+                                ],
+                                "College of Education": ["Bachelor of Secondary Education"],
+                                "College of Social and Behavioral Sciences": ["Bachelor of Arts in Psychology",
+                                    "Bachelor of Science in Psychology"
+                                ],
+                                "Institute of Public Administration and Governance": ["Bachelor of Public Administration"]
+                            },
+
+                            "majors": {
+                                "Bachelor of Science in Accountancy": ["Not Applicable"],
+                                "Bachelor of Science in Business Administration": ["Human Resource Management",
+                                    "Marketing Management", "Operations Management"
+                                ],
+                                "Bachelor of Secondary Education": ["English", "Filipino", "Social Studies"],
+                                "Bachelor of Arts in Psychology": ["Not Applicable"],
+                                "Bachelor of Science in Psychology": ["Not Applicable"],
+                                "Bachelor of Public Administration": ["Not Applicable"]
+                            }
+                        },
+
+                        "Bagac": {
+                            "colleges": ["College of Health Sciences", "College of Nursing"],
+
+                            "programs": {
+                                "College of Health Sciences": ["Bachelor of Science in Nursing",
+                                    "Bachelor of Science in Health Sciences"
+                                ],
+                                "College of Nursing": ["Bachelor of Science in Nursing", "Bachelor of Science in Health Sciences"]
+                            },
+
+                            "majors": {
+                                "Bachelor of Science in Nursing": ["Nursing", "Health Sciences"],
+                                "Bachelor of Science in Health Sciences": ["Health Sciences", "Health Administration"],
+                                "Bachelor of Science in Nursing": ["Nursing", "Health Sciences"],
+                                "Bachelor of Science in Health Sciences": ["Health Sciences", "Health Administration"]
+                            }
+                        },
+
+                        "Dinalupihan": {
+                            "colleges": ["College of Arts and Sciences", "College of Business and Entrepreneurship"],
+
+                            "programs": {
+                                "College of Arts and Sciences": ["Bachelor of Arts in Communication",
+                                    "Bachelor of Arts in English"
+                                ],
+                                "College of Business and Entrepreneurship": ["Bachelor of Science in Business Administration",
+                                    "Bachelor of Science in Entrepreneurship"
+                                ]
+                            }
+                        }
+                    },
+
+                    "majors": {
+                        "Bachelor of Arts in Communication": ["Broadcasting", "Journalism"],
+                        "Bachelor of Arts in English": ["Creative Writing", "Literature"],
+                        "Bachelor of Science in Business Administration": ["Management", "Marketing"],
+                        "Bachelor of Science in Entrepreneurship": ["Entrepreneurship", "Small Business Management"]
+                    },
+
+                    "Main": {
+                        "colleges": ["College of Arts and Sciences", "College of Business and Entrepreneurship"],
+
+                        "programs": {
+                            "College of Arts and Sciences": ["Bachelor of Arts in Communication",
+                                "Bachelor of Arts in English"
+                            ],
+                            "College of Business and Entrepreneurship": [
+                                "Bachelor of Science in Business Administration",
+                                "Bachelor of Science in Entrepreneurship"
+                            ]
+                        },
+
+                        "majors": {
+                            "Bachelor of Arts in Communication": ["Broadcasting", "Journalism"],
+                            "Bachelor of Arts in English": ["Creative Writing", "Literature"],
+                            "Bachelor of Science in Business Administration": ["Management", "Marketing"],
+                            "Bachelor of Science in Entrepreneurship": ["Entrepreneurship", "Small Business Management"]
+                        },
+
+                        "Orani": {
+                            "colleges": ["College of Arts and Sciences", "College of Business and Entrepreneurship"],
+
+                            "programs": {
+                                "College of Arts and Sciences": ["Bachelor of Arts in Communication",
+                                    "Bachelor of Arts in English"
+                                ],
+                                "College of Business and Entrepreneurship": [
+                                    "Bachelor of Science in Business Administration",
+                                    "Bachelor of Science in Entrepreneurship"
+                                ]
+                            },
+
+                            "majors": {
+                                "Bachelor of Arts in Communication": ["Broadcasting", "Journalism"],
+                                "Bachelor of Arts in English": ["Creative Writing", "Literature"],
+                                "Bachelor of Science in Business Administration": ["Management", "Marketing"],
+                                "Bachelor of Science in Entrepreneurship": ["Entrepreneurship",
+                                    "Small Business Management"
+                                ]
+                            }
+                        }
+                    }
+                };
+
+                // Function to populate college field based on selected campus
+                function populateCollege(campus) {
+                    const collegeSelect = document.getElementById("college");
+                    collegeSelect.innerHTML = "";
+                    collegeSelect.innerHTML += "<option value=''>Select College</option>";
+                    if (campusData[campus]) {
+                        campusData[campus].colleges.forEach(college => {
+                            collegeSelect.innerHTML += `<option value='${college}'>${college}</option>`;
+                        });
+                    }
+                }
+
+                // Function to populate program field based on selected college
+                function populateProgram(campus, college) {
+                    const programSelect = document.getElementById("program");
+                    programSelect.innerHTML = "";
+                    programSelect.innerHTML += "<option value=''>Select Program</option>";
+                    if (campusData[campus] && campusData[campus].programs[college]) {
+                        campusData[campus].programs[college].forEach(program => {
+                            programSelect.innerHTML += `<option value='${program}'>${program}</option>`;
+                        });
+                    }
+                }
+
+                // Function to populate major field based on selected program
+                function populateMajor(campus, program) {
+                    const majorSelect = document.getElementById("major");
+                    majorSelect.innerHTML = "";
+                    majorSelect.innerHTML += "<option value=''>Select Major</option>";
+                    if (campusData[campus] && campusData[campus].majors[program]) {
+                        campusData[campus].majors[program].forEach(major => {
+                            majorSelect.innerHTML += `<option value='${major}'>${major}</option>`;
+                        })
+                    }
+                }
+
+                // Event listeners for campus, college, program, and major fields
+                const campusSelect = document.getElementById("campus");
+                const collegeSelect = document.getElementById("college");
+                const programSelect = document.getElementById("program");
+                const majorSelect = document.getElementById("major");
+
+                campusSelect.addEventListener("change", () => {
+                    const selectedCampus = campusSelect.value;
+                    populateCollege(selectedCampus);
+                });
+
+                collegeSelect.addEventListener("change", () => {
+                    const selectedCampus = campusSelect.value;
+                    const selectedCollege = collegeSelect.value;
+                    populateProgram(selectedCampus, selectedCollege);
+                });
+
+                programSelect.addEventListener("change", () => {
+                    const selectedCampus = campusSelect.value;
+                    const selectedProgram = programSelect.value;
+                    populateMajor(selectedCampus, selectedProgram);
+                });
+
+                // Initial population of fields
+                populateCollege(campusSelect.value);
+                populateProgram(campusSelect.value, collegeSelect.value);
+                populateMajor(campusSelect.value, programSelect.value);
+            </script>
         </div>
     </main>
 @endsection
