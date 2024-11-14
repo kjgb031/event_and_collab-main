@@ -6,7 +6,7 @@
 
 @section('content')
     <main class="container flex items-center justify-center min-h-screen mx-auto">
-        <div class="flex flex-col items-center justify-center max-w-md px-6 py-12 mx-auto bg-white rounded shadow-md">
+        <div class="flex flex-col items-center justify-center max-w-md px-6 py-12 mx-auto bg-white rounded-lg shadow-md">
             <h1 class="mb-8 text-2xl font-bold text-center">{{ ucfirst($role) }} </h1>
             <img src="/logo.png" alt="Student organization collaboration and events management">
             <form class="w-full mt-8" method="POST" action="{{ route('authenticate') }}">
@@ -28,7 +28,7 @@
 
             @if ($role == 'student')
                 <div class="mt-4">
-                    Don&apos;t have an account? <a href="{{ route('student.register') }}" class="font-bold">Register</a>
+                    Don&apos;t have an account? <a href="{{ route('student.register') }}" class="font-bold">Sign-up</a>
                 </div>
             @endif
         </div>

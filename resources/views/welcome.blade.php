@@ -17,7 +17,7 @@
 <body class="bg-gray-100">
     <main class="container px-4 py-8 mx-auto">
         {{-- card --}}
-        <div class="flex flex-col max-w-xl px-6 py-20 mx-auto mt-10 bg-white rounded shadow-lg">
+        <div class="flex flex-col max-w-xl px-6 py-20 mx-auto mt-10 bg-white rounded-lg shadow-xl">
 
 
 
@@ -33,7 +33,7 @@
             <div class="grid grid-cols-1 gap-4 mt-8">
                 {{-- selection 1 - admin --}}
                 <a href="{{ route('admin.login') }}">
-                    <div class="bg-[#841818] text-white p-2 rounded shadow-lg hover:bg-[#600000] transition-all duration-100">
+                    <div class="bg-[#841818] text-white p-2 rounded-lg shadow-lg hover:bg-[#600000] transition-all duration-100">
                         <h2 class="text-xl font-semibold text-center">
                             Admin
                         </h2>
@@ -42,7 +42,7 @@
 
                 {{-- selection 2 - user --}}
                 <a href="{{ route('student.login') }}">
-                    <div class="bg-[#841818] text-white p-2 rounded shadow-lg hover:bg-[#600000] transition-all duration-100">
+                    <div class="bg-[#841818] text-white p-2 rounded-lg shadow-lg hover:bg-[#600000] transition-all duration-100">
                         <h2 class="text-xl font-semibold text-center">
                             Student
                         </h2>
@@ -52,7 +52,7 @@
 
                 {{-- selection 3 - organization --}}
                 <a href="{{ route('organization.login') }}">
-                    <div class="bg-[#841818] text-white p-2 rounded shadow-lg hover:bg-[#600000] transition-all duration-100">
+                    <div class="bg-[#841818] text-white p-2 rounded-lg shadow-lg hover:bg-[#600000] transition-all duration-100">
 
                         <h2 class="text-xl font-semibold text-center">
                             Organization

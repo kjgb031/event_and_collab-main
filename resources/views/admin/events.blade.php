@@ -13,6 +13,9 @@
             <h1 class="text-3xl font-bold">
                 Manage Events
             </h1>
+            <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">
+                Back
+            </a>
 
             {{-- Action buttons
             <div class="flex justify-end gap-6">

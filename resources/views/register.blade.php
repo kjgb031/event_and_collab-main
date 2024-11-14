@@ -6,7 +6,7 @@
 
 @section('content')
     <main class="container flex items-center justify-center min-h-screen mx-auto">
-        <div class="flex flex-col items-center justify-center max-w-xl px-6 py-12 mx-auto bg-white rounded shadow-md">
+        <div class="flex flex-col items-center justify-center max-w-xl px-6 py-12 mx-auto bg-white shadow-md rounded-lg">
             <img src="/logo.png" alt="Student organization collaboration and events management">
             <form class="grid w-full grid-cols-1 gap-2 md:grid-cols-2" method="POST" action="{{ route('student.store') }}">
                 @csrf
@@ -25,14 +25,19 @@
                 <x-text-input name="email" label="Email" type="email" required />
                 <x-text-input name="password" label="Password" type="password" required />
                 <x-text-input name="password_confirmation" label="Confirm Password" type="password" required />
+                <!--To be removed-->
                 <hr class="md:col-span-2">
                 <x-text-input name="guardian_name" label="Guardian Name" type="text" required />
                 <x-text-input name="guardian_contact" label="Guardian Contact" type="text" required />
                 <hr class="md:col-span-2">
                 <select name="campus" id="campus" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
                     <option value="">Select Campus</option>
+                    <option value="Abucay">Abucay</option>
+                    <option value="Balanga">Balanga</option>
+                    <option value="Bagac">Bagac</option>
+                    <option value="Dinalupihan">Dinalupihan</option>
                     <option value="Main">Main</option>
-                    <option value="Annex">Annex</option>
+                    <option value="Orani">Orani</option>
                 </select>
                 {{-- college --}}
                 <select name="college" id="college" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
@@ -106,7 +111,7 @@
                     <option value="Computer Science">Computer Science</option>
                 </select>
                 
-                <x-primary-button class="w-full md:col-span-2" type="submit">Register</x-primary-button>
+                <x-primary-button class="w-full md:col-span-2" type="submit">Sign-Up</x-primary-button>
                 <div class="mt-4 md:col-span-2">
                    Have an account? <a href="{{ route('student.login') }}" class="font-bold">Login</a>
                 </div>

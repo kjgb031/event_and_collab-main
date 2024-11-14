@@ -63,11 +63,8 @@ class AuthController extends Controller
             'guardian_contact' => $request->guardian_contact,
         ]);
 
-        // login student
-        auth()->login($student);
-
         // redirect student
-        return redirect()->route('student.dashboard');
+        return redirect()->route('student.login');
     }
 
     // organization login

@@ -36,7 +36,7 @@ class EventActionButtons extends Component implements HasForms, HasActions
             ->modalSubmitAction(false)
             ->disabled(fn() => !auth()->user()->isReservationConfirmed($this->event))
             ->icon('heroicon-o-ticket')
-            ->modalContent(view('modal.show-ticket', ['uid' => auth()->user()->eventRegistrations->where('event_id', $this->event->id)->first()->uid]));
+            ->modalContent(view('modal.show-ticket', ['uid' => optional(auth()->user()->eventRegistrations->where('event_id', $this->event->id)->first())->uid ?? 0]));
     }
 
     public function giveFeedbackAction(): Action

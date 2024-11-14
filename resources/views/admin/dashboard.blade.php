@@ -16,7 +16,7 @@
 
             {{-- Action buttons --}}
             <div class="flex justify-end gap-6">
-                <a href="{{ route('admin.organizations') }}" class="btn btn-primary">
+                <a href="{{ route('admin.organizations') }}" class="btn btn-primary ">
                     Manage Organization
                 </a>
                 <a href="{{ route('admin.events') }}" class="btn btn-primary">
