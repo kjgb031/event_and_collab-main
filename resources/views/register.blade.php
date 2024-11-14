@@ -70,142 +70,182 @@
                 // Hardcoded campus data for demonstration purposes
                 const campusData = {
 
-                        //Abucay
-                        "Abucay": {
-                            "colleges": ["College of Agriculture and Fisheries ", "College of Education",
-                                "Institute Of Agricultural And Biosystems Engineering"
+                    //Abucay
+                    "Abucay": {
+                        "colleges": ["College of Agriculture and Fisheries ", "College of Education",
+                            "Institute Of Agricultural And Biosystems Engineering"
+                        ],
+
+                        "programs": {
+                            "College of Agriculture and Fisheries": ["Bachelor of Science in Agriculture"],
+                            "College of Education": ["Bachelor of Technical-Vocational Teacher Education"],
+                            "Institute Of Agricultural And Biosystems Engineering": [
+                                "Bachelor of Science in Agricultural and Biosystems Engineering"
+                            ]
+                        },
+
+                        "majors": {
+                            "Bachelor of Science in Agriculture": ["Animal Science", "Crop Science"],
+                            "Bachelor of Technical-Vocational Teacher Education": ["Agricultural Crops Production",
+                                "Animal Production"
                             ],
+                            "Bachelor of Science in Agricultural and Biosystems Engineering": ["Not Applicable"]
+                        }
+                    },
 
-                            "programs": {
-                                "College of Agriculture and Fisheries": ["Bachelor of Science in Agriculture"],
-                                "College of Education": ["Bachelor of Technical-Vocational Teacher Education"],
-                                "Institute Of Agricultural And Biosystems Engineering": [
-                                    "Bachelor of Science in Agricultural and Biosystems Engineering"
-                                ]
-                            },
+                    //Balanga
+                    "Balanga": {
+                        "colleges": ["College of Business and Accountancy", "College of Education",
+                            "College of Social and Behavioral Sciences", "Institute of Public Administration and Governance"
+                        ],
 
-                            "majors": {
-                                "Bachelor of Science in Agriculture": ["Animal Science", "Crop Science"],
-                                "Bachelor of Technical-Vocational Teacher Education": ["Agricultural Crops Production",
-                                    "Animal Production"
-                                ],
-                                "Bachelor of Science in Agricultural and Biosystems Engineering": ["Not Applicable"]
-                            }
-                        },
-
-                        //Balanga
-                        "Balanga": {
-                            "colleges": ["College of Business and Accountancy", "College of Education",
-                                "College of Social and Behavioral Sciences", "Institute of Public Administration and Governance"
+                        "programs": {
+                            "College of Business and Accountancy": ["Bachelor of Science in Accountancy",
+                                "Bachelor of Science in Business Administration"
                             ],
-
-                            "programs": {
-                                "College of Business and Accountancy": ["Bachelor of Science in Accountancy",
-                                    "Bachelor of Science in Business Administration"
-                                ],
-                                "College of Education": ["Bachelor of Secondary Education"],
-                                "College of Social and Behavioral Sciences": ["Bachelor of Arts in Psychology",
-                                    "Bachelor of Science in Psychology"
-                                ],
-                                "Institute of Public Administration and Governance": ["Bachelor of Public Administration"]
-                            },
-
-                            "majors": {
-                                "Bachelor of Science in Accountancy": ["Not Applicable"],
-                                "Bachelor of Science in Business Administration": ["Human Resource Management",
-                                    "Marketing Management", "Operations Management"
-                                ],
-                                "Bachelor of Secondary Education": ["English", "Filipino", "Social Studies"],
-                                "Bachelor of Arts in Psychology": ["Not Applicable"],
-                                "Bachelor of Science in Psychology": ["Not Applicable"],
-                                "Bachelor of Public Administration": ["Not Applicable"]
-                            }
+                            "College of Education": ["Bachelor of Secondary Education"],
+                            "College of Social and Behavioral Sciences": ["Bachelor of Arts in Psychology",
+                                "Bachelor of Science in Psychology"
+                            ],
+                            "Institute of Public Administration and Governance": ["Bachelor of Public Administration"]
                         },
 
-                        "Bagac": {
-                            "colleges": ["College of Health Sciences", "College of Nursing"],
+                        "majors": {
+                            "Bachelor of Science in Accountancy": ["Not Applicable"],
+                            "Bachelor of Science in Business Administration": ["Human Resource Management",
+                                "Marketing Management", "Operations Management"
+                            ],
+                            "Bachelor of Secondary Education": ["English", "Filipino", "Social Studies"],
+                            "Bachelor of Arts in Psychology": ["Not Applicable"],
+                            "Bachelor of Science in Psychology": ["Not Applicable"],
+                            "Bachelor of Public Administration": ["Not Applicable"]
+                        }
+                    },
 
-                            "programs": {
-                                "College of Health Sciences": ["Bachelor of Science in Nursing",
-                                    "Bachelor of Science in Health Sciences"
-                                ],
-                                "College of Nursing": ["Bachelor of Science in Nursing", "Bachelor of Science in Health Sciences"]
-                            },
+                    //Bagac
+                    "Bagac": {
+                        "colleges": ["College of Education", "College of Technology"],
 
-                            "majors": {
-                                "Bachelor of Science in Nursing": ["Nursing", "Health Sciences"],
-                                "Bachelor of Science in Health Sciences": ["Health Sciences", "Health Administration"],
-                                "Bachelor of Science in Nursing": ["Nursing", "Health Sciences"],
-                                "Bachelor of Science in Health Sciences": ["Health Sciences", "Health Administration"]
-                            }
+                        "programs": {
+                            "College of Education": ["Bachelor of Elementary Education"],
+                            "College of Technology": ["Bachelor of Science in Industrial Technology"]
                         },
 
-                        "Dinalupihan": {
-                            "colleges": ["College of Arts and Sciences", "College of Business and Entrepreneurship"],
+                        "majors": {
+                            "Bachelor of Elementary Education": ["Not Applicable"],
+                            "Bachelor of Science in Industrial Technology": ["Electrical Technology",
+                                "Welding and Fabrication Technology"
+                            ]
 
-                            "programs": {
-                                "College of Arts and Sciences": ["Bachelor of Arts in Communication",
-                                    "Bachelor of Arts in English"
-                                ],
-                                "College of Business and Entrepreneurship": ["Bachelor of Science in Business Administration",
-                                    "Bachelor of Science in Entrepreneurship"
-                                ]
-                            }
-                        
-                    
-
-                            "majors": {
-                                "Bachelor of Arts in Communication": ["Broadcasting", "Journalism"],
-                                "Bachelor of Arts in English": ["Creative Writing", "Literature"],
-                                "Bachelor of Science in Business Administration": ["Management", "Marketing"],
-                                "Bachelor of Science in Entrepreneurship": ["Entrepreneurship", "Small Business Management"]
-                            },
                         }
+                    },
 
-                        "Main": {
-                            "colleges": ["College of Arts and Sciences", "College of Business and Entrepreneurship"],
+                    "Dinalupihan": {
+                        "colleges": ["College of Education"],
 
-                            "programs": {
-                                "College of Arts and Sciences": ["Bachelor of Arts in Communication",
-                                    "Bachelor of Arts in English"
-                                ],
-                                "College of Business and Entrepreneurship": [
-                                    "Bachelor of Science in Business Administration",
-                                    "Bachelor of Science in Entrepreneurship"
-                                ]
-                            },
+                        "programs": {
+                            "College of Education": ["Bachelor of Early Childhood Education",
+                                "Bachelor of Elementary Education", "Bachelor of Secondary Education"
+                            ]
 
-                            "majors": {
-                                "Bachelor of Arts in Communication": ["Broadcasting", "Journalism"],
-                                "Bachelor of Arts in English": ["Creative Writing", "Literature"],
-                                "Bachelor of Science in Business Administration": ["Management", "Marketing"],
-                                "Bachelor of Science in Entrepreneurship": ["Entrepreneurship", "Small Business Management"]
-                            },
+                        },
+
+                        "majors": {
+                            "Bachelor of Early Childhood Education": ["Not Applicable"],
+                            "Bachelor of Elementary Education": ["Not Applicable"],
+                            "Bachelor of Secondary Education": ["Mathematics", "Science"]
+                        },
+                    },
+
+                    //Main
+                    "Main": {
+                        "colleges": ["College of Allied Health Sciences", "College of Computer Studies",
+                            "College of Arts and Sciences", "College of Business and Accountancy",
+                            "College of Engineering and Architecture", "College of Technology"
+                        ],
+
+                        "programs": {
+                            "College of Allied Health Sciences": ["Bachelor of Science in Nursing",
+                                "Bachelor of Science in Midwifery",
+                                "Bachelor of Public Health"
+                            ],
+                            "College of Computer Studies": ["Bachelor of Computer Science",
+                                "Bachelor of Science in Entertainment and Multimedia Computing",
+                                "Bachelor of Science in Information Technology", "Bachelor of Science in Data Science"
+                            ],
+                            "College of Arts and Sciences": ["Bachelor of Arts in Communication"],
+                            "College of Business and Accountancy": ["Bachelor of Science in Hospitality Management",
+                                "Bachelor of Science in Tourism Management"
+                            ],
+                            "College of Engineering and Architecture": ["Bachelor of Science in Electrical Engineering",
+                                "Bachelor of Science in Electronics Engineering",
+                                "Bachelor of Science in Industrial Engineering",
+                                "Bachelor of Science in Mechanical Engineering", "Bachelor of Science in Architecture",
+                                "Bachelor of Science in Civil Engineering"
+
+                            ],
+                            "College of Technology": ["Bachelor of Technical Vocational Teacher Education",
+                                "Bachelor of Science in Industrial Technology"
+                            ]
+                        },
+
+                        "majors": {
+                            "Bachelor of Science in Nursing": [],
+                            "Bachelor of Science in Midwifery": [],
+                            "Bachelor of Public Health": [],
+                            "Bachelor of Computer Science": ["Network and Data Communication", "Software Development"],
+                            "Bachelor of Science in Entertainment and Multimedia Computing": ["Digital Animation Technology",
+                                "Game Development"
+                            ],
+                            "Bachelor of Science in Information Technology": ["Network and Web Application"],
+                            "Bachelor of Science in Data Science": [],
+                            "Bachelor of Arts in Communication": ["Creative and Performing Arts", "New Media Track"],
+                            "Bachelor of Science in Hospitality Management": [],
+                            "Bachelor of Science in Tourism Management": [],
+                            "Bachelor of Science in Electrical Engineering": [],
+                            "Bachelor of Science in Electronics Engineering": [],
+                            "Bachelor of Science in Industrial Engineering": [],
+                            "Bachelor of Science in Mechanical Engineering": [],
+                            "Bachelor of Science in Architecture": [],
+                            "Bachelor of Science in Civil Engineering": ["Construction Engineering and Management",
+                                "Structural Engineering"
+                            ],
+                            "Bachelor of Technical Vocational Teacher Education": ["Animation", "Automotive Technology",
+                                "Civil and Construction Technology", "Drafting Technology", "Electrical Technology",
+                                "Food and Service Management", "Garments, Fashion and Design",
+                                "Hotel and Restaurant Services", "Mechanical Technology",
+                                "Welding and Fabrication Technology"
+                            ],
+                            "Bachelor of Science in Industrial Technology": ["Automotive Technology", "Drafting Technology",
+                                "Electrical Technology", "Electronics Technology", "Food and Service Technology",
+                                "Garments, Fashion and Design", "Heating, Ventilating and Air Conditioning Technology",
+                                "Mechanical Technology", "Welding and Fabrication Technology"
+                            ]
+                        },
+                    }
+
+                    "Orani": {
+                        "colleges": ["College of Agriculture and Fisheries", "College of Education"],
+
+                        "programs": {
+                            "College of Agriculture and Fisheries": ["Bachelor of Science in Fisheries"],
+                            "College of Education": ["Bachelor of Physical Education",
+                                "Bachelor of Science in Exercise and Sports Sciences",
+                                "Bachelor of Technology and Livelihood Education"
+                            ]
+                        },
+
+                        "majors": {
+                            "Bachelor of Science in Fisheries": ["Not Applicable"],
+                            "Bachelor of Physical Education": ["Not Applicable"],
+                            "Bachelor of Science in Exercise and Sports Sciences": ["Fitness and Sports Coaching",
+                                "Fitness and Sports Management"
+                            ],
+                            "Bachelor of Technology and Livelihood Education": ["Industrial Arts"]
+
                         }
+                    }
 
-                        "Orani": {
-                            "colleges": ["College of Arts and Sciences", "College of Business and Entrepreneurship"],
-
-                            "programs": {
-                                "College of Arts and Sciences": ["Bachelor of Arts in Communication",
-                                    "Bachelor of Arts in English"
-                                ],
-                                "College of Business and Entrepreneurship": [
-                                    "Bachelor of Science in Business Administration",
-                                    "Bachelor of Science in Entrepreneurship"
-                                ]
-                            },
-
-                            "majors": {
-                                "Bachelor of Arts in Communication": ["Broadcasting", "Journalism"],
-                                "Bachelor of Arts in English": ["Creative Writing", "Literature"],
-                                "Bachelor of Science in Business Administration": ["Management", "Marketing"],
-                                "Bachelor of Science in Entrepreneurship": ["Entrepreneurship",
-                                    "Small Business Management"
-                                ]
-                            }
-                        }
-                    
                 };
 
                 // Function to populate college field based on selected campus
