@@ -151,35 +151,37 @@
                                     "Bachelor of Science in Entrepreneurship"
                                 ]
                             }
+                        
+                    
+
+                            "majors": {
+                                "Bachelor of Arts in Communication": ["Broadcasting", "Journalism"],
+                                "Bachelor of Arts in English": ["Creative Writing", "Literature"],
+                                "Bachelor of Science in Business Administration": ["Management", "Marketing"],
+                                "Bachelor of Science in Entrepreneurship": ["Entrepreneurship", "Small Business Management"]
+                            },
                         }
-                    },
 
-                    "majors": {
-                        "Bachelor of Arts in Communication": ["Broadcasting", "Journalism"],
-                        "Bachelor of Arts in English": ["Creative Writing", "Literature"],
-                        "Bachelor of Science in Business Administration": ["Management", "Marketing"],
-                        "Bachelor of Science in Entrepreneurship": ["Entrepreneurship", "Small Business Management"]
-                    },
+                        "Main": {
+                            "colleges": ["College of Arts and Sciences", "College of Business and Entrepreneurship"],
 
-                    "Main": {
-                        "colleges": ["College of Arts and Sciences", "College of Business and Entrepreneurship"],
+                            "programs": {
+                                "College of Arts and Sciences": ["Bachelor of Arts in Communication",
+                                    "Bachelor of Arts in English"
+                                ],
+                                "College of Business and Entrepreneurship": [
+                                    "Bachelor of Science in Business Administration",
+                                    "Bachelor of Science in Entrepreneurship"
+                                ]
+                            },
 
-                        "programs": {
-                            "College of Arts and Sciences": ["Bachelor of Arts in Communication",
-                                "Bachelor of Arts in English"
-                            ],
-                            "College of Business and Entrepreneurship": [
-                                "Bachelor of Science in Business Administration",
-                                "Bachelor of Science in Entrepreneurship"
-                            ]
-                        },
-
-                        "majors": {
-                            "Bachelor of Arts in Communication": ["Broadcasting", "Journalism"],
-                            "Bachelor of Arts in English": ["Creative Writing", "Literature"],
-                            "Bachelor of Science in Business Administration": ["Management", "Marketing"],
-                            "Bachelor of Science in Entrepreneurship": ["Entrepreneurship", "Small Business Management"]
-                        },
+                            "majors": {
+                                "Bachelor of Arts in Communication": ["Broadcasting", "Journalism"],
+                                "Bachelor of Arts in English": ["Creative Writing", "Literature"],
+                                "Bachelor of Science in Business Administration": ["Management", "Marketing"],
+                                "Bachelor of Science in Entrepreneurship": ["Entrepreneurship", "Small Business Management"]
+                            },
+                        }
 
                         "Orani": {
                             "colleges": ["College of Arts and Sciences", "College of Business and Entrepreneurship"],
@@ -203,7 +205,7 @@
                                 ]
                             }
                         }
-                    }
+                    
                 };
 
                 // Function to populate college field based on selected campus
