@@ -72,7 +72,7 @@
 
                     //Abucay
                     "Abucay": {
-                        "colleges": ["College of Agriculture and Fisheries ", "College of Education",
+                        "colleges": ["College of Agriculture and Fisheries", "College of Education",
                             "Institute Of Agricultural And Biosystems Engineering"
                         ],
 
@@ -251,6 +251,7 @@
                 // Function to populate college field based on selected campus
                 function populateCollege(campus) {
                     const collegeSelect = document.getElementById("college");
+                    console.log(campus);
                     collegeSelect.innerHTML = "";
                     collegeSelect.innerHTML += "<option value=''>Select College</option>";
                     if (campusData[campus]) {
@@ -263,6 +264,7 @@
                 // Function to populate program field based on selected college
                 function populateProgram(campus, college) {
                     const programSelect = document.getElementById("program");
+                    console.log(campus, college);
                     programSelect.innerHTML = "";
                     programSelect.innerHTML += "<option value=''>Select Program</option>";
                     if (campusData[campus] && campusData[campus].programs[college]) {
@@ -275,6 +277,7 @@
                 // Function to populate major field based on selected program
                 function populateMajor(campus, program) {
                     const majorSelect = document.getElementById("major");
+                    console.log(campus, program);
                     majorSelect.innerHTML = "";
                     majorSelect.innerHTML += "<option value=''>Select Major</option>";
                     if (campusData[campus] && campusData[campus].majors[program]) {
