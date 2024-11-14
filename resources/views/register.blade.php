@@ -72,7 +72,7 @@
 
                     //Abucay
                     "Abucay": {
-                        "colleges": ["College of Agriculture and Fisheries ", "College of Education",
+                        "colleges": ["College of Agriculture and Fisheries", "College of Education",
                             "Institute Of Agricultural And Biosystems Engineering"
                         ],
 
