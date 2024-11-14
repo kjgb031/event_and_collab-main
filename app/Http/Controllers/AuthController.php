@@ -80,10 +80,12 @@ class AuthController extends Controller
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
+            'role' => 'required',
         ]);
 
         // check user
         $credentials = $request->only('email', 'password');
+        $credentials['role'] = $request->role;
         if (!auth()->attempt($credentials)) {
             return back()->withErrors(['error' => 'Invalid credentials']);
         }

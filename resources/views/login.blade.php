@@ -21,6 +21,9 @@
                         </ul>
                     </div>
                 @endif
+                {{-- hidden input to indicate what role --}}
+                <input type="hidden" name="role" value="{{ $role }}">
+
                 <x-text-input name="email" label="Email" type="email" required />
                 <x-text-input name="password" label="Password" type="password" required />
                 <x-primary-button class="w-full" type="submit">Login</x-primary-button>
