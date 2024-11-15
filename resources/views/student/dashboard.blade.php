@@ -30,7 +30,7 @@
                 @foreach ($events as $event)
                 <a href="{{ route('student.event.show', $event) }}">
                     <div class="p-4 text-center transition-transform duration-300 ease-in-out bg-white rounded-lg shadow hover:scale-105 aspect-square">
-                        <img src="{{Storage::url($event->cover_image)}}" alt="{{ $event->title }}" class="object-cover w-full h-48 aspect-square">
+                        <img src="{{Storage::url($event->thumbnail)}}" alt="{{ $event->title }}" class="object-cover w-full h-48 aspect-square">
                         <h3 class="mt-2 text-xl font-bold">{{ $event->name }}</h3>
                         <p class="text-gray-500">{{ $event->date->format('M d, Y') }}</p>
                         
