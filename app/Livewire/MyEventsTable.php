@@ -81,7 +81,20 @@ class MyEventsTable extends Component implements HasForms, HasTable
                     ->action(fn($data) => Event::propose($data))
                     ->form([
                         FileUpload::make('cover_image')
+                            ->helperText('Image should be 16:9')
                             ->image()
+                            ->imageEditor()
+                            ->imageEditorAspectRatios([
+                                '16:9',
+                            ])
+                            ->required(),
+                        FileUpload::make('thumbnail')
+                            ->helperText('Image should be 1:1')
+                            ->image()
+                            ->imageEditor()
+                            ->imageEditorAspectRatios([
+                                '1:1',
+                            ])
                             ->required(),
                         TextInput::make('name')
                             ->required(),
@@ -103,7 +116,10 @@ class MyEventsTable extends Component implements HasForms, HasTable
                                 'other' => 'Other',
                             ])
                             ->required(),
-                            Select::make('event_mode')
+                        TextInput::make('student_capacity')
+                            ->numeric()
+                            ->required(),
+                        Select::make('event_mode')
                             ->options([
                                 'online' => 'Online',
                                 'Onsite' => 'Onsite',

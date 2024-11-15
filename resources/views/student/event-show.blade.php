@@ -8,13 +8,19 @@
 
 @section('content')
     <main class="container mx-auto my-10">
+        <div class="flex justify-end">
+            <a href="{{ route('student.dashboard') }}" class="btn btn-primary m-4">
+                Back
+            </a>
+        </div>
         @if (auth()->user()->isReservationConfirmed($event))
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
                 <strong class="font-bold">Success!</strong>
                 <span class="block sm:inline">You have successfully reserved a slot for this event.</span>
             </div>
         @elseif (auth()->user()->isReserved($event))
-            <div class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <div class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative mb-4"
+                role="alert">
                 <strong class="font-bold">Pending!</strong>
                 <span class="block sm:inline">Your reservation is pending approval.</span>
             </div>

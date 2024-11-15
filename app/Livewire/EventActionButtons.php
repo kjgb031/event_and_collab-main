@@ -103,6 +103,7 @@ class EventActionButtons extends Component implements HasForms, HasActions
                         }
                     )
                     ->required()
+                        //remove
                     ->visible(fn(Get $get) => $get('mode_of_payment') === 'onsite'),
                 TextInput::make('year_and_section')
                     ->label('Year and Section')

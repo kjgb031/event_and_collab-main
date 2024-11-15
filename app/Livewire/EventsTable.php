@@ -53,7 +53,7 @@ class EventsTable extends Component implements HasForms, HasTable
                             'approved' => 'success',
                             'pending' => 'warning',
                             'rejected' => 'danger',
-                        ])  
+                        ])
                 ])
             ])
             ->emptyStateHeading('No pending events found')
@@ -64,6 +64,9 @@ class EventsTable extends Component implements HasForms, HasTable
                 ViewAction::make()
                     ->form([
                         FileUpload::make('cover_image')
+                            ->image()
+                            ->required(),
+                        FileUpload::make('thumbnail')
                             ->image()
                             ->required(),
                         TextInput::make('name')
@@ -85,7 +88,7 @@ class EventsTable extends Component implements HasForms, HasTable
                     ]),
 
             ])
-          
+
             ->bulkActions([
                 // ...
             ]);

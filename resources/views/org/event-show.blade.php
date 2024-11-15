@@ -13,6 +13,11 @@
             <h1 class="text-3xl font-bold">
                 Manage Event
             </h1>
+            <div class="flex justify-end">
+                <a href="{{ route('organization.dashboard') }}" class="btn btn-primary">
+                    Back
+                </a>
+            </div>
 
 
         </section>

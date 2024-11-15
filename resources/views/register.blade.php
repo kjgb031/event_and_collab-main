@@ -249,6 +249,7 @@
                 };
 
                 // Function to populate college field based on selected campus
+                // Function to populate college field based on selected campus
                 function populateCollege(campus) {
                     const collegeSelect = document.getElementById("college");
                     console.log(campus);
@@ -259,6 +260,14 @@
                             collegeSelect.innerHTML += `<option value='${college}'>${college}</option>`;
                         });
                     }
+                    // Repopulate program field
+                    const programSelect = document.getElementById("program");
+                    programSelect.innerHTML = "";
+                    programSelect.innerHTML += "<option value=''>Select Program</option>";
+                    // Repopulate major field
+                    const majorSelect = document.getElementById("major");
+                    majorSelect.innerHTML = "";
+                    majorSelect.innerHTML += "<option value=''>Select Major</option>";
                 }
 
                 // Function to populate program field based on selected college
@@ -272,6 +281,10 @@
                             programSelect.innerHTML += `<option value='${program}'>${program}</option>`;
                         });
                     }
+                    // Repopulate major field
+                    const majorSelect = document.getElementById("major");
+                    majorSelect.innerHTML = "";
+                    majorSelect.innerHTML += "<option value=''>Select Major</option>";
                 }
 
                 // Function to populate major field based on selected program
@@ -309,7 +322,6 @@
                     const selectedProgram = programSelect.value;
                     populateMajor(selectedCampus, selectedProgram);
                 });
-
                 // Initial population of fields
                 populateCollege(campusSelect.value);
                 populateProgram(campusSelect.value, collegeSelect.value);

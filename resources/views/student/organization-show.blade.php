@@ -7,9 +7,15 @@
 
 @section('content')
     <main class="container mx-auto my-10">
+        <section class="grid grid-cols-2 gap-4">
         <h1 class="text-4xl font-bold">
             {{ $organization->organization_name }}
         </h1>
+        <div class="flex justify-end">
+            <a href="{{ route('student.dashboard') }}" class="btn btn-primary">
+                Back                
+            </a>
+        </section>
 
         {{-- render all approved events by this org --}}
         <div class="grid grid-cols-1 gap-4 my-10 md:grid-cols-2 lg:grid-cols-3">
