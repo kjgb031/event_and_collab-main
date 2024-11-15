@@ -21,6 +21,7 @@ class Event extends Model
         'status',
         'cover_image',
         'user_id',
+        'event_mode',    
     ];
 
     protected $casts = [
