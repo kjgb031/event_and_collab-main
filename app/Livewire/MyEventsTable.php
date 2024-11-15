@@ -94,6 +94,9 @@ class MyEventsTable extends Component implements HasForms, HasTable
                             ->live()
                             ->required(),
                         TimePicker::make('end_time')
+                            ->validationMessages([
+                                'after' => 'The event time must be at least 1 hour long',
+                            ])
                             ->after(fn(Get $get) => \Carbon\Carbon::parse($get('start_time'))->addHour())
                             ->required(),
                         Select::make('event_type')
