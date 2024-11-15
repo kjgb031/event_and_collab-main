@@ -23,9 +23,7 @@
         <section class="my-6">
             @livewire('org.reserved-confirmation-table', ['event' => $event])
         </section>
-        <section class="my-6">
-            @livewire('org.appointments-table', ['event' => $event])
-        </section>
+        
         <section class="my-6">
             @livewire('org.attendance-table', ['event' => $event])
         </section>

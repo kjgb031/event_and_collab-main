@@ -49,6 +49,8 @@ class DatabaseSeeder extends Seeder
             'cover_image' => 'test.jpg',
             'event_type' => 'seminar',
             'user_id' => 2,
+            'event_mode' => 'online',
+            'is_paid' => 1,
         ]);
 
 

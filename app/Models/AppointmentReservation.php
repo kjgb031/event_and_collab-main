@@ -51,6 +51,9 @@ class AppointmentReservation extends Model
 
    
 
+    /**
+     * @deprecated
+     */
     public function appointmentDate()
     {
         return $this->belongsTo(AppointmentDate::class);

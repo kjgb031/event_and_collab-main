@@ -20,6 +20,10 @@ use Filament\Tables\Columns\Layout\Split;
 use Filament\Tables\Columns\SelectColumn;
 use Livewire\Component;
 
+/**
+ * to be removed
+ * @deprecated
+ */
 class AppointmentsTable extends Component implements HasForms, HasTable
 {
     use InteractsWithTable;
