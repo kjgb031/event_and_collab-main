@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+@php
+    $events = \App\Models\Event::all();
+@endphp
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,9 +34,23 @@
 
             {{-- search bar --}}
             @if (auth()->user()->role == 'student')
-                <div>
-                    <input type="text" class="px-4 py-2 border border-gray-200 rounded-lg" placeholder="Search...">
-                </div>
+
+                <form action="{{ route('student.search') }}" method="GET" class="flex items-center">
+                    <input type="text" name="q" class="px-4 py-2 border border-gray-200 rounded-lg"
+                        placeholder="Search..." list="event-suggestions">
+                    <datalist id="event-suggestions">
+                        @foreach ($events as $event)
+                            <option value="{{ $event->name }}"></option>
+                        @endforeach
+                    </datalist>
+                    <button type="submit" class="px-4 py-2 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                        </svg>
+                    </button>
+                </form>
             @endif
 
             {{-- buttons --}}
