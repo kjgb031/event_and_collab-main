@@ -34,6 +34,14 @@ class Feedback extends Model
     {
         parent::boot();
 
+        static::creating(function ($feedback) {
+            $feedback->comment = \ConsoleTVs\Profanity\Builder::blocker($feedback->comment)->filter();
+            // filter all questions
+            foreach (self::QUESTIONS as $key => $question) {
+                $feedback->$key = \ConsoleTVs\Profanity\Builder::blocker($feedback->$key)->filter();
+            }
+        });
+
         static::created(function ($feedback) {
             Notification::make()
                 ->body('Feedback received for ' . $feedback->event->name)
