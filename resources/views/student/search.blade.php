@@ -26,6 +26,20 @@
                     </div>
                 </div>
             @endforeach
+
+            {{-- display organizations --}}
+            @foreach ($organizations as $organization)
+                <div class="flex flex-col justify-between overflow-hidden bg-white rounded-lg shadow-lg">
+                    <img class="object-cover object-center w-full h-56" src="{{ $organization->image }}"
+                        alt="{{ $organization->name }}">
+
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold text-gray-800">{{ $organization->organization_name }}</h2>
+                        <a href="{{ route('student.organization.show', $organization) }}"
+                            class="mt-4 btn btn-primary">View Organization</a>
+                    </div>
+                </div>
+            @endforeach
         @endif
     </section>
 @endsection

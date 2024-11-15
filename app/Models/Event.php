@@ -78,6 +78,10 @@ class Event extends Model
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * To be removed
+     * @deprecated
+     */
     public function appointmentDates()
     {
         return $this->hasMany(AppointmentDate::class);

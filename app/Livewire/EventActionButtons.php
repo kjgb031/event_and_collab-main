@@ -92,19 +92,7 @@ class EventActionButtons extends Component implements HasForms, HasActions
                     ])
                     ->live()
                     ->required(),
-                Select::make('appointment_date_id')
-                    ->label('Appointment Date')
-                    ->relationship(name: 'appointmentDate', modifyQueryUsing: function ($query) {
-                        return $query->where('status', 'pending');
-                    })
-                    ->getOptionLabelFromRecordUsing(
-                        function (AppointmentDate $record) {
-                            return $record->date->format('M d, Y') . ' ' . $record->start_time . ' - ' . $record->end_time;
-                        }
-                    )
-                    ->required()
-                        //remove
-                    ->visible(fn(Get $get) => $get('mode_of_payment') === 'onsite'),
+               
                 TextInput::make('year_and_section')
                     ->label('Year and Section')
                     ->required(),

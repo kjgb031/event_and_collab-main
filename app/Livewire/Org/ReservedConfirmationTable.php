@@ -54,9 +54,6 @@ class ReservedConfirmationTable extends Component implements HasTable, HasForms
                         'pending' => 'warning',
                         default => 'gray',
                     }),
-                TextColumn::make('appointmentDate.date')
-                    ->default("Not Set")
-                    ->formatStateUsing(fn($record) => $record->appointmentDate ? $record->appointmentDate->date->format('M d, Y') : 'Not Set')
             ])
             ->filters([
                 SelectFilter::make('mode_of_payment')
@@ -69,9 +66,6 @@ class ReservedConfirmationTable extends Component implements HasTable, HasForms
                         'paid' => 'Paid',
                         'pending' => 'Pending',
                     ]),
-                SelectFilter::make('appointmentDate')
-                    ->relationship('appointmentDate', 'date')
-                    
             ])
             ->persistFiltersInSession()
             ->heading(

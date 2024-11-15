@@ -85,8 +85,14 @@ class StudentController extends Controller
             ->orWhere('description', 'like', "%$request->q%")
             ->get();
 
+        // search for organizations
+
+        $organizations = User::where('role', 'organization')
+            ->where('name', 'like', "%$request->q%")
+            ->get();
+
         $q = $request->q;
 
-        return view('student.search', compact('events', 'q'));
+        return view('student.search', compact('events', 'q', 'organizations'));
     }
 }
