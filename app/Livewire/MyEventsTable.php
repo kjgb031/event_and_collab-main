@@ -5,6 +5,9 @@ namespace App\Livewire;
 use App\Models\Event;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\TimePicker;
@@ -80,53 +83,56 @@ class MyEventsTable extends Component implements HasForms, HasTable
                 CreateAction::make()
                     ->action(fn($data) => Event::propose($data))
                     ->form([
-                        FileUpload::make('cover_image')
-                            ->helperText('Image should be 16:9')
-                            ->image()
-                            ->imageEditor()
-                            ->imageEditorAspectRatios([
-                                '16:9',
-                            ])
-                            ->required(),
-                        FileUpload::make('thumbnail')
-                            ->helperText('Image should be 1:1')
-                            ->image()
-                            ->imageEditor()
-                            ->imageEditorAspectRatios([
-                                '1:1',
-                            ])
-                            ->required(),
-                        TextInput::make('name')
-                            ->required(),
-                        TextInput::make('description')
-                            ->required(),
-                        DatePicker::make('date')
-                            ->required(),
-                        TimePicker::make('start_time')
-                            ->required(),
-                        TimePicker::make('end_time')
-                            ->required(),
-                        Select::make('event_type')
-                            ->options([
-                                'seminar' => 'Seminar',
-                                'workshop' => 'Workshop',
-                                'competition' => 'Competition',
-                                'concert' => 'Concert',
-                                'conference' => 'Conference',
-                                'other' => 'Other',
-                            ])
-                            ->required(),
-                        TextInput::make('student_capacity')
-                            ->numeric()
-                            ->required(),
-                        Select::make('event_mode')
-                            ->options([
-                                'online' => 'Online',
-                                'Onsite' => 'Onsite',
-                            ])
-                            ->required(),
-                        TextInput::make('location')
-                            ->required(),
+                        Section::make([
+                            FileUpload::make('cover_image')
+                                ->helperText('Image should be 16:9')
+                                ->image()
+                                ->imageEditor()
+                                ->imageEditorAspectRatios([
+                                    '16:9',
+                                ])
+                                ->required(),
+                            FileUpload::make('thumbnail')
+                                ->helperText('Image should be 1:1')
+                                ->image()
+                                ->imageEditor()
+                                ->imageEditorAspectRatios([
+                                    '1:1',
+                                ])
+                                ->required(),
+                            TextInput::make('name')
+                                ->required(),
+                            RichEditor::make('description')
+                                    ->columnSpanFull()
+                                ->required(),
+                            DatePicker::make('date')
+                                ->required(),
+                            TimePicker::make('start_time')
+                                ->required(),
+                            TimePicker::make('end_time')
+                                ->required(),
+                            Select::make('event_type')
+                                ->options([
+                                    'seminar' => 'Seminar',
+                                    'workshop' => 'Workshop',
+                                    'competition' => 'Competition',
+                                    'concert' => 'Concert',
+                                    'conference' => 'Conference',
+                                    'other' => 'Other',
+                                ])
+                                ->required(),
+                            TextInput::make('student_capacity')
+                                ->numeric()
+                                ->required(),
+                            Select::make('event_mode')
+                                ->options([
+                                    'online' => 'Online',
+                                    'Onsite' => 'Onsite',
+                                ])
+                                ->required(),
+                            TextInput::make('location')
+                                ->required(),
+                        ])->columns(2),
                     ]),
             ])
 

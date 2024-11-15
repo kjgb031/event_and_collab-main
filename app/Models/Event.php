@@ -20,8 +20,10 @@ class Event extends Model
         'location',
         'status',
         'cover_image',
+        'thumbnail',
         'user_id',
         'event_mode',    
+        'capacity',
     ];
 
     protected $casts = [
