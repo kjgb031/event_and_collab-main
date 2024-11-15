@@ -78,6 +78,10 @@ class EventsTable extends Component implements HasForms, HasTable
                             ->required(),
                         TextInput::make('location')
                             ->required(),
+                        TextInput::make('event_mode')
+                            ->required(),
+                        TextInput::make('student_capacity')
+                            ->required(),
                     ]),
 
             ])

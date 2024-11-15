@@ -109,7 +109,15 @@ class MyEventsTable extends Component implements HasForms, HasTable
                                 'other' => 'Other',
                             ])
                             ->required(),
+                            Select::make('event_mode')
+                            ->options([
+                                'online' => 'Online',
+                                'onsite' => 'Onsite',
+                            ])
+                            ->required(),
                         TextInput::make('location')
+                            ->required(),
+                        TextInput::make('student_capacity')
                             ->required(),
                     ]),
             ])
