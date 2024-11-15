@@ -47,6 +47,7 @@ class DatabaseSeeder extends Seeder
             'location' => 'test location',
             'status' => 'pending',
             'cover_image' => 'test.jpg',
+            'thumbnail' => 'test.jpg',
             'event_type' => 'seminar',
             'user_id' => 2,
             'event_mode' => 'online',

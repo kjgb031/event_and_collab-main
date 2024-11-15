@@ -22,7 +22,10 @@ return new class extends Migration
             $table->string('location');
             $table->string('status');
             $table->string('cover_image');
+            $table->string('thumbnail');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->integer('capacity')->default(0);
+            $table->boolean('is_paid')->default(false);
             $table->timestamps();
         });
     }
