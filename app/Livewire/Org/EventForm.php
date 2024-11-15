@@ -27,23 +27,7 @@ class EventForm extends Component implements HasForms
     public function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\FileUpload::make('cover_image')
-                    ->image()
-                    ->required(),
-                Forms\Components\TextInput::make('name')
-                    ->required(),
-                Forms\Components\RichEditor::make('description')
-                    ->required(),
-                Forms\Components\Datepicker::make('date')
-                    ->required(),
-                Forms\Components\Timepicker::make('start_time')
-                    ->required(),
-                Forms\Components\Timepicker::make('end_time')
-                    ->required(),
-                Forms\Components\TextInput::make('location')
-                    ->required(),
-            ])
+            ->schema(Event::getForm())
             ->statePath('data');
     }
 

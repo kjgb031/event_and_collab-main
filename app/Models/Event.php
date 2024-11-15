@@ -2,6 +2,14 @@
 
 namespace App\Models;
 
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TimePicker;
+use Filament\Forms\Get;
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -22,7 +30,7 @@ class Event extends Model
         'cover_image',
         'thumbnail',
         'user_id',
-        'event_mode',    
+        'event_mode',
         'capacity',
     ];
 
@@ -39,7 +47,7 @@ class Event extends Model
             ->sendToDatabase($this->user)
             ->send();
 
-        
+
 
         $this->update([
             'status' => 'approved',
@@ -60,7 +68,8 @@ class Event extends Model
         ]);
     }
 
-    public static function propose($data){
+    public static function propose($data)
+    {
         // make a data with pending status
         $data['status'] = 'pending';
         $data['user_id'] = auth()->id();
@@ -75,6 +84,69 @@ class Event extends Model
             ->send();
     }
 
+    public static function getForm(): array
+    {
+        return [
+            Section::make([
+                FileUpload::make('cover_image')
+                    ->helperText('Image should be 16:9')
+                    ->image()
+                    ->imageEditor()
+                    ->imageEditorAspectRatios([
+                        '16:9',
+                    ])
+                    ->required(),
+                FileUpload::make('thumbnail')
+                    ->helperText('Image should be 1:1')
+                    ->image()
+                    ->imageEditor()
+                    ->imageEditorAspectRatios([
+                        '1:1',
+                    ])
+                    ->required(),
+                TextInput::make('name')
+                    ->required(),
+                RichEditor::make('description')
+                    ->columnSpanFull()
+                    ->required(),
+                DatePicker::make('date')
+                    ->required(),
+                TimePicker::make('start_time')
+                    ->required()
+                    ->live(),
+                TimePicker::make('end_time')
+                    ->validationMessages([
+                        'after' => 'The event time must be at least 1 hour long',
+                    ])
+                    ->after(fn(Get $get) => \Carbon\Carbon::parse($get('start_time'))->addHour())
+                    ->required()
+                    ->required(),
+                Select::make('event_type')
+                    ->options([
+                        'seminar' => 'Seminar',
+                        'workshop' => 'Workshop',
+                        'competition' => 'Competition',
+                        'concert' => 'Concert',
+                        'conference' => 'Conference',
+                        'other' => 'Other',
+                    ])
+                    ->required(),
+                TextInput::make('capacity')
+                    ->numeric()
+                    ->required(),
+                Select::make('event_mode')
+                    ->options([
+                        'online' => 'Online',
+                        'Onsite' => 'Onsite',
+                    ])
+                    ->required(),
+                TextInput::make('location')
+                    ->required(),
+            ])->columns(2),
+        ];
+    }
+
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -88,7 +160,7 @@ class Event extends Model
     {
         return $this->hasMany(AppointmentDate::class);
     }
-  
+
     public function eventRegistrations()
     {
         return $this->hasMany(EventRegistration::class);
