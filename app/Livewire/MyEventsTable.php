@@ -11,7 +11,6 @@ use Filament\Forms\Components\TimePicker;
 use Livewire\Component;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Get;
 use Filament\Support\Enums\FontWeight;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\ImageColumn;
@@ -91,13 +90,8 @@ class MyEventsTable extends Component implements HasForms, HasTable
                         DatePicker::make('date')
                             ->required(),
                         TimePicker::make('start_time')
-                            ->live()
                             ->required(),
                         TimePicker::make('end_time')
-                            ->validationMessages([
-                                'after' => 'The event time must be at least 1 hour long',
-                            ])
-                            ->after(fn(Get $get) => \Carbon\Carbon::parse($get('start_time'))->addHour())
                             ->required(),
                         Select::make('event_type')
                             ->options([
@@ -107,6 +101,12 @@ class MyEventsTable extends Component implements HasForms, HasTable
                                 'concert' => 'Concert',
                                 'conference' => 'Conference',
                                 'other' => 'Other',
+                            ])
+                            ->required(),
+                            Select::make('event_mode')
+                            ->options([
+                                'online' => 'Online',
+                                'Onsite' => 'Onsite',
                             ])
                             ->required(),
                         TextInput::make('location')

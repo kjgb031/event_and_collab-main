@@ -13,9 +13,11 @@
             <h1 class="text-3xl font-bold">
                 Manage Organizations
             </h1>
-            <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">
-                Back
-            </a>
+            <div class="flex justify-end">
+                <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">
+                    Back
+                </a>
+                </div>
 
             {{-- Action buttons
             <div class="flex justify-end gap-6">
