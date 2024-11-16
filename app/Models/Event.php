@@ -32,11 +32,19 @@ class Event extends Model
         'user_id',
         'event_mode',
         'capacity',
+        'is_paid',
     ];
 
     protected $casts = [
         'date' => 'datetime',
+        'is_paid' => 'boolean',
     ];
+
+    public function isFull()
+    {
+        return $this->eventRegistrations->count() >= $this->capacity;
+    }
+
 
     public function approve()
     {
@@ -66,6 +74,12 @@ class Event extends Model
         $this->update([
             'status' => 'rejected',
         ]);
+    }
+
+    
+    public function getEventButtonLabel()
+    {
+        return $this->is_paid ? 'Register' : 'Reserve';
     }
 
     public static function propose($data)

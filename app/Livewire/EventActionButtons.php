@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\AppointmentDate;
 use App\Models\AppointmentReservation;
+use App\Models\Event;
 use App\Models\Feedback;
 use App\Models\User;
 use Filament\Actions\Action;
@@ -22,7 +23,7 @@ class EventActionButtons extends Component implements HasForms, HasActions
     use InteractsWithActions;
     use InteractsWithForms;
 
-    public $event;
+    public Event $event;
 
     public function mount($event)
     {
@@ -80,8 +81,8 @@ class EventActionButtons extends Component implements HasForms, HasActions
     public function reserveAction(): Action
     {
         return Action::make('reserve')
-            ->label('Reserve')
-            ->disabled(fn() => auth()->user()->isReserved($this->event))
+            ->label($this->event->getButonLabel())
+            ->disabled(fn() => auth()->user()->isReserved($this->event) || $this->event->isFull())
             ->icon('heroicon-o-calendar')
             ->form([
                 Select::make('mode_of_payment')

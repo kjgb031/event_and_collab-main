@@ -15,7 +15,17 @@ class EventRegistration extends Model
         'user_id',
         'status',
         'uid',
+        'proof_of_payment',
     ];
+
+
+    const STATUSES = [
+        'rejected' => 'Rejected',
+        'pending' => 'Pending',
+        'reserved' => 'Reserved',
+        'attended' => 'Attended',
+    ];
+
 
     protected static function boot()
     {
@@ -25,6 +35,7 @@ class EventRegistration extends Model
             $eventRegistration->uid = uniqid();
         });
     }
+
 
     public function markAsAttended()
     {
