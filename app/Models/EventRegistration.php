@@ -47,10 +47,36 @@ class EventRegistration extends Model
         });
     }
 
+    public function markAsPaid()
+    {
+        $this->status = EventRegistration::STATUSES['reserved'];
+        $this->save();
+
+        Notification::make()
+            ->title('Event Registration Marked as Paid')
+            ->success()
+            ->body("Event Registration for {$this->event->name} has been marked as paid.")
+            ->sendToDatabase($this->user)
+            ->send();
+    }
+
+    public function markAsRejected()
+    {
+        $this->status = EventRegistration::STATUSES['rejected'];
+        $this->save();
+
+        Notification::make()
+            ->title('Event Registration Marked as Rejected')
+            ->success()
+            ->body("Event Registration for {$this->event->name} has been marked as rejected.")
+            ->sendToDatabase($this->user)
+            ->send();
+    }
+
 
     public function markAsAttended()
     {
-        $this->status = 'attended';
+        $this->status = EventRegistration::STATUSES['attended'];
         $this->save();
 
         Notification::make()

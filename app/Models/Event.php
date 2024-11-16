@@ -43,7 +43,32 @@ class Event extends Model
 
     public function isFull()
     {
-        return $this->eventRegistrations->count() >= $this->capacity;
+        return $this->eventRegistrations->where('status', '!=', EventRegistration::STATUSES['rejected'])->count() >= $this->capacity;
+    }
+
+    public function userCanFeedback()
+    {
+        // ensure the event has ended
+        if ($this->date->isFuture()) {
+            return false;
+        }
+
+        // ensure the user has attended the event
+        if (!$this->eventRegistrations->where('user_id', auth()->id())->where('status', EventRegistration::STATUSES['attended'])->count()) {
+            return false;
+        }
+
+        // ensure the user has not given feedback
+        if ($this->feedbacks->where('user_id', auth()->id())->count()) {
+            return false;
+        }
+
+        // ensure proof of attendance has been submitted
+        if (!$this->eventRegistrations->where('user_id', auth()->id())->where('status', EventRegistration::STATUSES['attended'])->first()->proof_of_attendance) {
+            return false;
+        }
+
+        return true;
     }
 
 
@@ -179,5 +204,4 @@ class Event extends Model
     {
         return $this->hasMany(Feedback::class);
     }
-
 }

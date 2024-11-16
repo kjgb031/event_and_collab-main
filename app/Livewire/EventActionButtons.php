@@ -46,7 +46,7 @@ class EventActionButtons extends Component implements HasForms, HasActions
         return Action::make('giveFeedback')
             ->label('Give Feedback')
             ->icon('heroicon-o-chat-bubble-bottom-center-text')
-            ->disabled(fn() => !auth()->user()->hasAttended($this->event) || auth()->user()->hasGivenFeedback($this->event))
+            ->disabled(fn() => !$this->event->userCanFeedback(auth()->user()))
             ->form(Feedback::getForm())
             ->action(function ($data) {
                 $data['user_id'] = auth()->id();

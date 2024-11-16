@@ -8,6 +8,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
@@ -15,6 +16,7 @@ use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
 class AttendanceTable extends Component implements HasForms, HasTable
@@ -63,12 +65,24 @@ class AttendanceTable extends Component implements HasForms, HasTable
             ])
             ->persistFiltersInSession()
             ->actions([
-                Action::make('mark_as_attended')
-                    ->label('Mark as Attended')
-                    ->requiresConfirmation()
-                    ->icon('heroicon-o-check-circle')
-                    ->action(fn(EventRegistration $record) => $record->markAsAttended())
-                    ->visible(fn(EventRegistration $record) => $record->status === 'registered'),
+                ActionGroup::make([
+                    // if online show proof of payment
+                    Action::make('proof_of_payment')
+                        ->icon('heroicon-o-document')
+                        ->url(fn($record) => Storage::url($record->proof_of_payment), true),
+                    // mark as paid
+                    Action::make('mark_as_paid')
+                        ->requiresConfirmation()
+                        ->action(fn($record) => $record->markAsPaid())
+                        ->icon('heroicon-o-check-circle')
+                        ->visible(fn($record) => $record->status === EventRegistration::STATUSES['pending']),
+                    Action::make('mark_as_attended')
+                        ->label('Mark as Attended')
+                        ->requiresConfirmation()
+                        ->icon('heroicon-o-check-circle')
+                        ->action(fn(EventRegistration $record) => $record->markAsAttended())
+                        ->visible(fn(EventRegistration $record) => $record->status === 'registered'),
+                ]),
             ]);
     }
 
