@@ -170,15 +170,6 @@ class Event extends Model
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * To be removed
-     * @deprecated
-     */
-    public function appointmentDates()
-    {
-        return $this->hasMany(AppointmentDate::class);
-    }
-
     public function eventRegistrations()
     {
         return $this->hasMany(EventRegistration::class);
@@ -189,8 +180,4 @@ class Event extends Model
         return $this->hasMany(Feedback::class);
     }
 
-    public function appointmentReservations()
-    {
-        return $this->hasMany(AppointmentReservation::class);
-    }
 }

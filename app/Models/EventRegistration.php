@@ -36,6 +36,15 @@ class EventRegistration extends Model
         static::creating(function ($eventRegistration) {
             $eventRegistration->uid = uniqid();
         });
+
+        static::created(function ($eventRegistration) {
+            Notification::make()
+                ->title('Event Registration Created')
+                ->success()
+                ->body("Event Registration for {$eventRegistration->event->name} has been created.")
+                ->sendToDatabase($eventRegistration->user)
+                ->send();
+        });
     }
 
 
