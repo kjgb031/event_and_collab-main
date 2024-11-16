@@ -76,7 +76,7 @@ class Event extends Model
         ]);
     }
 
-    
+
     public function getEventButtonLabel()
     {
         return $this->is_paid ? 'Register' : 'Reserve';
@@ -147,6 +147,7 @@ class Event extends Model
                     ->required(),
                 TextInput::make('capacity')
                     ->numeric()
+                    ->minValue(1)
                     ->required(),
                 Select::make('event_mode')
                     ->options([
