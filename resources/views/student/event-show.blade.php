@@ -5,21 +5,109 @@
 @endsection
 
 
+@push('styles')
+    <style>
+        .rctxt {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .rctxt h1,
+        .rctxt h2,
+        .rctxt h3,
+        .rctxt h4,
+        .rctxt h5,
+        .rctxt h6 {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 1em;
+        }
+
+        .rctxt p {
+            margin: 1em 0;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .rctxt a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .rctxt a:hover {
+            text-decoration: underline;
+        }
+
+        .rctxt ul,
+        .rctxt ol {
+            padding-left: 1.5em;
+            margin-bottom: 1.5em;
+        }
+
+        .rctxt li {
+            margin-bottom: 0.5em;
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .rctxt blockquote {
+            font-style: italic;
+            border-left: 4px solid #ddd;
+            padding-left: 1em;
+            margin-left: 0;
+            margin-bottom: 1.5em;
+            color: #555;
+        }
+
+        .rctxt strong {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .rctxt em {
+            font-style: italic;
+            color: #16a085;
+        }
+
+        .rctxt code {
+            font-family: 'Courier New', monospace;
+            background-color: #f4f4f4;
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            color: #2c3e50;
+        }
+
+        .rctxt hr {
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin: 2em 0;
+        }
+
+        .rctxt img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1em 0;
+        }
+    </style>
+@endpush
+
 
 @section('content')
     <main class="container mx-auto my-10">
         <div class="flex justify-end">
-            <a href="{{ route('student.dashboard') }}" class="btn btn-primary m-4">
+            <a href="{{ route('student.dashboard') }}" class="m-4 btn btn-primary">
                 Back
             </a>
         </div>
         @if (auth()->user()->isReservationConfirmed($event))
-            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <div class="relative px-4 py-3 mb-4 text-green-700 bg-green-100 border border-green-400 rounded" role="alert">
                 <strong class="font-bold">Success!</strong>
                 <span class="block sm:inline">You have successfully reserved a slot for this event.</span>
             </div>
         @elseif (auth()->user()->isReserved($event))
-            <div class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative mb-4"
+            <div class="relative px-4 py-3 mb-4 text-yellow-700 bg-yellow-100 border border-yellow-400 rounded"
                 role="alert">
                 <strong class="font-bold">Pending!</strong>
                 <span class="block sm:inline">Your reservation is pending approval.</span>
@@ -31,7 +119,7 @@
 
         <article class="flex flex-col items-center gap-6">
             {{-- cover image --}}
-            <img src="{{ $event->cover_url }}" alt="{{ $event->name }}"
+            <img src="{{ \Storage::url($event->cover_image) }}" alt="{{ $event->name }}"
                 class="object-contain w-full rounded-lg shadow-lg h-96">
 
             {{-- event details --}}
@@ -57,7 +145,7 @@
 
 
             </div>
-            <div class="mt-4">
+            <div class="mt-4 rctxt">
                 {!! $event->description !!}
             </div>
         </article>

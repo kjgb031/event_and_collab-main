@@ -58,7 +58,7 @@ class EventActionButtons extends Component implements HasForms, HasActions
     public function reserveAction(): Action
     {
         return Action::make('reserve')
-            ->label($this->event->getButonLabel())
+            ->label($this->event->getEventButtonLabel())
             ->disabled(fn() => User::find(auth()->id())->isReserved($this->event) || $this->event->isFull())
             ->icon('heroicon-o-calendar')
             ->form([
