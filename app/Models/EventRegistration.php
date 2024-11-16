@@ -17,6 +17,8 @@ class EventRegistration extends Model
         'uid',
         'proof_of_payment',
         'proof_of_attendance',
+        'consent_form',
+
     ];
 
 
