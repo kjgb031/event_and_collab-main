@@ -37,7 +37,7 @@ class EventActionButtons extends Component implements HasForms, HasActions
         return Action::make('showTicket')
             ->label('Show Ticket ID')
             ->modalSubmitAction(false)
-            ->disabled(fn() => !auth()->user()->isReservationConfirmed($this->event))
+            ->disabled(fn() => !auth()->user()->canSeeTicket($this->event))
             ->icon('heroicon-o-ticket')
             ->modalContent(view('modal.show-ticket', ['uid' => optional(auth()->user()->eventRegistrations->where('event_id', $this->event->id)->first())->uid ?? 0]));
     }

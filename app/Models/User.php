@@ -71,7 +71,7 @@ class User extends Authenticatable
             throw new \Exception('This user is not a student.');
         }
 
-       
+
         return $this->eventRegistrations()
             ->where('event_id', $event->id)
             ->exists();
@@ -114,6 +114,19 @@ class User extends Authenticatable
             ->exists();
     }
 
+    public function canSeeTicket(Event $event): bool
+    {
+        if ($this->role !== 'student') {
+            throw new \Exception('This user is not a student.');
+        }
+
+        return $this->eventRegistrations()
+            ->where('event_id', $event->id)
+            ->where('status', EventRegistration::STATUSES['reserved'])
+            ->orWhere('status',  EventRegistration::STATUSES['attended'])
+            ->exists();
+    }
+
     public function haveProofOfAttendance(Event $event): bool
     {
         if ($this->role !== 'student') {
@@ -148,7 +161,7 @@ class User extends Authenticatable
         return $this->hasOne(StudentData::class);
     }
 
- 
+
 
     public function eventRegistrations()
     {
