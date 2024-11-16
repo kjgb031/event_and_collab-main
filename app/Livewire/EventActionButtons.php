@@ -17,6 +17,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Get;
+use Filament\Notifications\Notification;
 use Livewire\Component;
 
 class EventActionButtons extends Component implements HasForms, HasActions
@@ -84,6 +85,37 @@ class EventActionButtons extends Component implements HasForms, HasActions
             ->model(EventRegistration::class);
     }
 
+    public function uploadProofOfAttendance(): Action
+    {
+        return Action::make('uploadProofOfAttendance')
+            ->label('Upload Proof of Attendance')
+            ->icon('heroicon-o-document')
+            ->form([
+                FileUpload::make('proof_of_attendance')
+                    ->label('Proof of Attendance')
+                    ->image()
+                    ->required(),
+            ])
+            ->disabled(fn() => !auth()->user()->hasAttended($this->event) || auth()->user()->haveProofOfAttendance($this->event))
+            ->action(function ($data) {
+                $eventRegistration = EventRegistration::where('user_id', auth()->id())->where('event_id', $this->event->id)->first();
+                $eventRegistration->proof_of_attendance = $data['proof_of_attendance'];
+                $eventRegistration->save();
+
+                Notification::make()
+                    ->title('Proof of Attendance Uploaded')
+                    ->success()
+                    ->body("Proof of Attendance for {$this->event->name} has been uploaded.")
+                    ->sendToDatabase(auth()->user())
+                    ->send();
+            })
+            ->fillForm(function () {
+                return [
+                    'proof_of_attendance' => $this->event->proof_of_attendance,
+                ];
+            })
+            ->model(EventRegistration::class);
+    }
 
     public function render()
     {

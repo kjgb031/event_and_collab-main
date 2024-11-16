@@ -85,9 +85,21 @@ class User extends Authenticatable
 
         return $this->eventRegistrations()
             ->where('event_id', $event->id)
-            ->where('status', 'reserved')
+            ->where('status', EventRegistration::STATUSES['reserved'])
             ->exists();
     }
+    public function isReservationAttended(Event $event): bool
+    {
+        if ($this->role !== 'student') {
+            throw new \Exception('This user is not a student.');
+        }
+
+        return $this->eventRegistrations()
+            ->where('event_id', $event->id)
+            ->where('status', EventRegistration::STATUSES['attended'])
+            ->exists();
+    }
+
 
     public function hasAttended(Event $event): bool
     {
@@ -98,6 +110,18 @@ class User extends Authenticatable
         return $this->eventRegistrations()
             ->where('event_id', $event->id)
             ->where('status', 'attended')
+            // ->where('proof_of_attendance', '!=', null)
+            ->exists();
+    }
+
+    public function haveProofOfAttendance(Event $event): bool
+    {
+        if ($this->role !== 'student') {
+            throw new \Exception('This user is not a student.');
+        }
+
+        return $this->eventRegistrations()
+            ->where('event_id', $event->id)
             ->where('proof_of_attendance', '!=', null)
             ->exists();
     }

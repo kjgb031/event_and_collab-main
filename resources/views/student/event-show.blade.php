@@ -101,7 +101,12 @@
                 Back
             </a>
         </div>
-        @if (auth()->user()->isReservationConfirmed($event))
+        @if (auth()->user()->isReservationAttended($event))
+            <div class="relative px-4 py-3 mb-4 text-green-700 bg-green-100 border border-green-400 rounded" role="alert">
+                <strong class="font-bold">Success!</strong>
+                <span class="block sm:inline">You have successfully attended this event.</span>
+            </div>
+        @elseif (auth()->user()->isReservationConfirmed($event))
             <div class="relative px-4 py-3 mb-4 text-green-700 bg-green-100 border border-green-400 rounded" role="alert">
                 <strong class="font-bold">Success!</strong>
                 <span class="block sm:inline">You have successfully reserved a slot for this event.</span>

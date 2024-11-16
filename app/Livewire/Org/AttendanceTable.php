@@ -49,19 +49,18 @@ class AttendanceTable extends Component implements HasForms, HasTable
                     ->label('Status')
                     ->badge()
                     ->color(fn(string $state): string => match ($state) {
-                        'attended' => 'success',
-                        'registered' => 'warning',
-                        default => 'gray',
+                        EventRegistration::STATUSES['rejected'] => 'danger',
+                        EventRegistration::STATUSES['pending'] => 'warning',
+                        EventRegistration::STATUSES['reserved'] => 'success',
+                        EventRegistration::STATUSES['attended'] => 'secondary',
+                        default => 'primary',
                     })
             ])
-            ->heading('Attendance Confirmations')
+            ->heading('Registrations')
             ->filters([
                 // with attended status
                 SelectFilter::make('status')
-                    ->options([
-                        'attended' => 'Attended',
-                        'registered' => 'Registered',
-                    ])
+                    ->options(EventRegistration::STATUSES)
             ])
             ->persistFiltersInSession()
             ->actions([
@@ -69,7 +68,12 @@ class AttendanceTable extends Component implements HasForms, HasTable
                     // if online show proof of payment
                     Action::make('proof_of_payment')
                         ->icon('heroicon-o-document')
+                        ->visible(fn($record) => $this->event->is_paid)
                         ->url(fn($record) => Storage::url($record->proof_of_payment), true),
+                    //  show consent form
+                    Action::make('consent_form')
+                        ->icon('heroicon-o-document')
+                        ->url(fn($record) => Storage::url($record->consent_form), true),
                     // mark as paid
                     Action::make('mark_as_paid')
                         ->requiresConfirmation()
@@ -81,7 +85,7 @@ class AttendanceTable extends Component implements HasForms, HasTable
                         ->requiresConfirmation()
                         ->icon('heroicon-o-check-circle')
                         ->action(fn(EventRegistration $record) => $record->markAsAttended())
-                        ->visible(fn(EventRegistration $record) => $record->status === 'registered'),
+                        ->visible(fn(EventRegistration $record) => $record->status === EventRegistration::STATUSES['reserved']),
                 ]),
             ]);
     }

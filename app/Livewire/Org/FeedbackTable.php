@@ -8,12 +8,14 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
 class FeedbackTable extends Component implements HasForms, HasTable
@@ -43,18 +45,22 @@ class FeedbackTable extends Component implements HasForms, HasTable
                 TextColumn::make('event.name')
                     ->label('Event')
                     ->sortable(),
-                TextColumn::make('question_01')
-                    ->label(Feedback::QUESTIONS['question_01']),
-                TextColumn::make('question_02')
-                    ->label(Feedback::QUESTIONS['question_02']),
-                TextColumn::make('question_03')
-                    ->label(Feedback::QUESTIONS['question_03']),
-                TextColumn::make('question_04')
-                    ->label(Feedback::QUESTIONS['question_04']),
-                TextColumn::make('question_05')
-                    ->label(Feedback::QUESTIONS['question_05']),
-                TextColumn::make('comment')
-                    ->label('Comment'),
+                TextColumn::make('created_at')
+                    ->label('Date')
+                    ->dateTime()
+                    ->sortable(),
+                // TextColumn::make('question_01')
+                //     ->label(Feedback::QUESTIONS['question_01']),
+                // TextColumn::make('question_02')
+                //     ->label(Feedback::QUESTIONS['question_02']),
+                // TextColumn::make('question_03')
+                //     ->label(Feedback::QUESTIONS['question_03']),
+                // TextColumn::make('question_04')
+                //     ->label(Feedback::QUESTIONS['question_04']),
+                // TextColumn::make('question_05')
+                //     ->label(Feedback::QUESTIONS['question_05']),
+                // TextColumn::make('comment')
+                //     ->label('Comment'),
             ])
             ->filters([
                 // ...
@@ -79,7 +85,12 @@ class FeedbackTable extends Component implements HasForms, HasTable
                         Textarea::make('comment')
                             ->label('Comment')
 
-                    ])
+                    ]),
+                Action::make('proofOfAttendance')
+                    ->url(fn($record) => Storage::url($record->user->eventRegistrations()->where('event_id', $this->event->id)->first()->proof_of_attendance), true)
+                    ->icon('heroicon-o-document')
+                    ->label('Proof of Attendance')
+
             ])
             ->bulkActions([
                 // ...
