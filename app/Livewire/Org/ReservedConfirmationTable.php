@@ -4,6 +4,7 @@ namespace App\Livewire\Org;
 
 use App\Models\AppointmentReservation;
 use App\Models\Event;
+use App\Models\EventRegistration;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -32,8 +33,9 @@ class ReservedConfirmationTable extends Component implements HasTable, HasForms
     {
         return $table
             ->query(
-                AppointmentReservation::query()
+                EventRegistration::query()
                     ->where('event_id', $this->event->id)
+                    ->where('status', 'pending')
             )
             ->columns([
                 TextColumn::make('user.name')

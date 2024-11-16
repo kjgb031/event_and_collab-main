@@ -72,7 +72,7 @@ class User extends Authenticatable
         }
 
        
-        return $this->appointmentReservations()
+        return $this->eventRegistrations()
             ->where('event_id', $event->id)
             ->exists();
     }
@@ -83,9 +83,9 @@ class User extends Authenticatable
             throw new \Exception('This user is not a student.');
         }
 
-        return $this->appointmentReservations()
+        return $this->eventRegistrations()
             ->where('event_id', $event->id)
-            ->where('payment_status', 'paid')
+            ->where('status', 'reserved')
             ->exists();
     }
 
@@ -124,14 +124,7 @@ class User extends Authenticatable
         return $this->hasOne(StudentData::class);
     }
 
-    public function appointmentReservations()
-    {
-        if ($this->role !== 'student') {
-            throw new \Exception('This user is not a student.');
-        }
-
-        return $this->hasMany(AppointmentReservation::class);
-    }
+ 
 
     public function eventRegistrations()
     {

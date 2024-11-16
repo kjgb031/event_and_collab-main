@@ -62,30 +62,9 @@ class EventsTable extends Component implements HasForms, HasTable
             ])
             ->actions([
                 ViewAction::make()
-                    ->form([
-                        FileUpload::make('cover_image')
-                            ->image()
-                            ->required(),
-                        FileUpload::make('thumbnail')
-                            ->image()
-                            ->required(),
-                        TextInput::make('name')
-                            ->required(),
-                        RichEditor::make('description')
-                            ->required(),
-                        TextInput::make('date')
-                            ->required(),
-                        TextInput::make('start_time')
-                            ->required(),
-                        TextInput::make('end_time')
-                            ->required(),
-                        TextInput::make('location')
-                            ->required(),
-                        TextInput::make('event_mode')
-                            ->required(),
-                        TextInput::make('student_capacity')
-                            ->required(),
-                    ]),
+                    ->form(
+                        Event::getForm()
+                    ),
 
             ])
 

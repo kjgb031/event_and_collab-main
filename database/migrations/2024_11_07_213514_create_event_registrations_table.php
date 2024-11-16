@@ -17,6 +17,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('status');
             $table->string('uid');
+            $table->string('proof_of_payment')->nullable();
+            $table->string('proof_of_attendance')->nullable();
+            $table->string('consent_form')->nullable();
             $table->timestamps();
         });
     }
