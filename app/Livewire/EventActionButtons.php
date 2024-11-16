@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\AppointmentDate;
 use App\Models\AppointmentReservation;
 use App\Models\Event;
+use App\Models\EventRegistration;
 use App\Models\Feedback;
 use App\Models\User;
 use Filament\Actions\Action;
@@ -62,30 +63,25 @@ class EventActionButtons extends Component implements HasForms, HasActions
             ->disabled(fn() => User::find(auth()->id())->isReserved($this->event) || $this->event->isFull())
             ->icon('heroicon-o-calendar')
             ->form([
-                Select::make('mode_of_payment')
-                    ->label('Mode of Payment')
-                    ->options([
-                        'online' => 'Online',
-                        'onsite' => 'Onsite',
-                    ])
-                    ->live()
-                    ->required(),
-               
-                TextInput::make('year_and_section')
-                    ->label('Year and Section')
-                    ->required(),
                 FileUpload::make('proof_of_payment')
                     ->label('Proof of Payment')
-                    ->visible(fn(Get $get) => $get('mode_of_payment') === 'online')
+                    ->image()
+                    ->visible(fn() => $this->event->is_paid)
+                    ->required(),
+                FileUpload::make('consent_form')
+                    ->label('Consent Form')
+                    ->acceptedFileTypes(
+                        ['application/pdf', 'image/*']
+                    )
                     ->required(),
             ])
             ->action(function ($data) {
                 $data['user_id'] = auth()->id();
                 $data['event_id'] = $this->event->id;
-                $data['payment_status'] = 'pending';
-                AppointmentReservation::create($data);
+                $data['status'] = $this->event->is_paid ? EventRegistration::STATUSES['pending'] : EventRegistration::STATUSES['reserved'];
+                EventRegistration::create($data);
             })
-            ->model(AppointmentReservation::class);
+            ->model(EventRegistration::class);
     }
 
 

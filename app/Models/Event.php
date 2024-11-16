@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
@@ -79,7 +80,7 @@ class Event extends Model
 
     public function getEventButtonLabel()
     {
-        return $this->is_paid ? 'Register' : 'Reserve';
+        return $this->is_paid ? 'Reserve' : 'Register';
     }
 
     public static function propose($data)
@@ -157,6 +158,8 @@ class Event extends Model
                     ->required(),
                 TextInput::make('location')
                     ->required(),
+                Checkbox::make('is_paid')
+                    ->columnSpanFull(),
             ])->columns(2),
         ];
     }
