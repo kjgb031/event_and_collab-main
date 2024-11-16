@@ -92,6 +92,8 @@ Route::prefix('organization')->group(function () {
             ->name('organization.event.show');
         Route::get('/appointments/{appointment}', [OrganizationController::class, 'appointmentShow'])
             ->name('organization.appointment.show');
+        Route::post('/events/{event}/scan', [OrganizationController::class, 'eventScan'])
+            ->name('organization.event.scan');
         Route::get('/profile', function () {
             return 'Organization Profile';
         });

@@ -83,8 +83,7 @@ class EventRegistration extends Model
             ->title('Event Registration Marked as Attended')
             ->success()
             ->body("Event Registration for {$this->event->name} has been marked as attended.")
-            ->sendToDatabase($this->user)
-            ->send();
+            ->sendToDatabase($this->user);
     }
 
     public function event()
