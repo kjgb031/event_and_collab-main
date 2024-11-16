@@ -62,9 +62,7 @@ Route::prefix('student')->group(function () {
 
     Route::group(['middleware' => ['auth', 'student']], function () {
         Route::get('/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
-        Route::get('/profile', function () {
-            return 'User Profile';
-        });
+        Route::get('/profile', [StudentController::class, 'profile'])->name('student.profile');
         Route::get('/events', [StudentController::class, 'events'])
             ->name('student.events');
         Route::get('/events/query', [StudentController::class, 'eventQuery'])

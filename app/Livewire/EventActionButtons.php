@@ -46,34 +46,11 @@ class EventActionButtons extends Component implements HasForms, HasActions
             ->label('Give Feedback')
             ->icon('heroicon-o-chat-bubble-bottom-center-text')
             ->disabled(fn() => !auth()->user()->hasAttended($this->event) || auth()->user()->hasGivenFeedback($this->event))
-            ->form([
-                TextInput::make('question_01')
-                    ->label(Feedback::QUESTIONS['question_01'])
-                    ->required(),
-                TextInput::make('question_02')
-                    ->label(Feedback::QUESTIONS['question_02'])
-                    ->required(),
-                TextInput::make('question_03')
-                    ->label(Feedback::QUESTIONS['question_03'])
-                    ->required(),
-                TextInput::make('question_04')
-                    ->label(Feedback::QUESTIONS['question_04'])
-                    ->required(),
-                Select::make('question_05')
-                    ->label(Feedback::QUESTIONS['question_05'])
-                    ->options([
-                        'yes' => 'Yes',
-                        'no' => 'No',
-                    ])
-                    ->required(),
-                TextInput::make('comment')
-                    ->label('Additional Comments')
-            ])
+            ->form(Feedback::getForm())
             ->action(function ($data) {
                 $data['user_id'] = auth()->id();
                 $data['event_id'] = $this->event->id;
                 Feedback::create($data);
-
             })
             ->model(Feedback::class);
     }
@@ -82,7 +59,7 @@ class EventActionButtons extends Component implements HasForms, HasActions
     {
         return Action::make('reserve')
             ->label($this->event->getButonLabel())
-            ->disabled(fn() => auth()->user()->isReserved($this->event) || $this->event->isFull())
+            ->disabled(fn() => User::find(auth()->id())->isReserved($this->event) || $this->event->isFull())
             ->icon('heroicon-o-calendar')
             ->form([
                 Select::make('mode_of_payment')

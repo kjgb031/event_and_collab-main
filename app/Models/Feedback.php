@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -50,6 +52,33 @@ class Feedback extends Model
                 ->send()
                 ->sendToDatabase(collect([$feedback->event->user, $feedback->user]));
         });
+    }
+
+    public static function getForm(): array
+    {
+        return [
+            TextInput::make('question_01')
+                ->label(Feedback::QUESTIONS['question_01'])
+                ->required(),
+            TextInput::make('question_02')
+                ->label(Feedback::QUESTIONS['question_02'])
+                ->required(),
+            TextInput::make('question_03')
+                ->label(Feedback::QUESTIONS['question_03'])
+                ->required(),
+            TextInput::make('question_04')
+                ->label(Feedback::QUESTIONS['question_04'])
+                ->required(),
+            Select::make('question_05')
+                ->label(Feedback::QUESTIONS['question_05'])
+                ->options([
+                    'yes' => 'Yes',
+                    'no' => 'No',
+                ])
+                ->required(),
+            TextInput::make('comment')
+                ->label('Additional Comments')
+        ];
     }
 
     public function getQuestion($question)

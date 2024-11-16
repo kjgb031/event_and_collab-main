@@ -98,6 +98,7 @@ class User extends Authenticatable
         return $this->eventRegistrations()
             ->where('event_id', $event->id)
             ->where('status', 'attended')
+            ->where('proof_of_attendance', '!=', null)
             ->exists();
     }
 

@@ -21,6 +21,11 @@ class StudentController extends Controller
         return view('student.dashboard', compact('events', 'organizations'));
     }
 
+    public function profile()
+    {
+        return view('student.profile');
+    }
+
     public function events()
     {
         return view('student.events');
