@@ -21,7 +21,8 @@
         <div class="grid grid-cols-1 gap-4 my-10 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($organization->getApprovedEvents() as $event)
                 <div class="overflow-hidden bg-white rounded-lg shadow-lg">
-                    <img class="object-cover object-center w-full h-56" src="{{ $event->image }}" alt="{{ $event->name }}">
+                    <img class="object-cover object-center w-full h-56" src="{{ \Storage::url($event->thumbnail) }}"
+                    alt="{{ $event->name }}">
 
                     <div class="p-4">
                         <h2 class="text-xl font-bold text-gray-800">{{ $event->name }}</h2>
