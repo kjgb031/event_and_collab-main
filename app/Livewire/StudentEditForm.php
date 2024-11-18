@@ -10,6 +10,7 @@ use Livewire\Component;
 use Filament\Forms\Components\FileUpload;
 use App\Models\User;
 use App\Models\StudentData;
+use Filament\Notifications\Notification;
 
 class StudentEditForm extends Component implements HasForms
 {
@@ -58,21 +59,28 @@ class StudentEditForm extends Component implements HasForms
 
     public function create(): void
     {
-        $this->validate();
+        $tempData = $this->form->getState();
+        \Log::info($tempData);
         $this->user->update([
-            'avatar' => $this->data['avatar'],
-            'first_name' => $this->data['first_name'],
-            'last_name' => $this->data['last_name'],
-            'email' => $this->data['email'],
+            'avatar' => $tempData['avatar'],
+            'first_name' => $tempData['first_name'],
+            'last_name' => $tempData['last_name'],
+            'email' => $tempData['email'],
         ]);
         $this->studentData->update([
-            'campus' => $this->data['campus'],
-            'college' => $this->data['college'],
-            'program' => $this->data['program'],
-            'major' => $this->data['major'],
-            'guardian_name' => $this->data['guardian_name'],
-            'guardian_contact' => $this->data['guardian_contact'],
+            'campus' => $tempData['campus'],
+            'college' => $tempData['college'],
+            'program' => $tempData['program'],
+            'major' => $tempData['major'],
+            'guardian_name' => $tempData['guardian_name'],
+            'guardian_contact' => $tempData['guardian_contact'],
         ]);
+
+        Notification::make()
+            ->success()
+            ->title('Profile Updated')
+            ->body('Your profile has been updated successfully.')
+            ->send();
     }
     
     public function render()
