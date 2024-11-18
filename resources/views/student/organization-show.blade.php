@@ -19,7 +19,7 @@
 
         {{-- render all approved events by this org --}}
         <div class="grid grid-cols-1 gap-4 my-10 md:grid-cols-2 lg:grid-cols-3">
-            @foreach ($organization->events as $event)
+            @foreach ($organization->getApprovedEvents() as $event)
                 <div class="overflow-hidden bg-white rounded-lg shadow-lg">
                     <img class="object-cover object-center w-full h-56" src="{{ $event->image }}" alt="{{ $event->name }}">
 
