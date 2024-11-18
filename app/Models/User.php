@@ -189,4 +189,15 @@ class User extends Authenticatable
 
         return $this->hasMany(Event::class);
     }
+
+    public function getApprovedEvents()
+    {
+        if ($this->role !== 'organization') {
+            throw new \Exception('This user is not an organization.');
+        }
+
+        return $this->events()
+            ->where('status', 'approved')
+            ->get();
+    }
 }
