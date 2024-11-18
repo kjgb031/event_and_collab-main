@@ -122,8 +122,7 @@ class User extends Authenticatable
 
         return $this->eventRegistrations()
             ->where('event_id', $event->id)
-            ->where('status', EventRegistration::STATUSES['reserved'])
-            ->orWhere('status',  EventRegistration::STATUSES['attended'])
+            ->whereIn('status', [EventRegistration::STATUSES['reserved'], EventRegistration::STATUSES['attended']])
             ->exists();
     }
 
