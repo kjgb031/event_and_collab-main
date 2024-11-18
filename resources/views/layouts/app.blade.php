@@ -28,7 +28,7 @@
 </head>
 
 <body class="antialiased">
-    <header class="bg-white shadow">
+    <header class="bg-white shadow" >
         <div class="container flex items-center justify-between py-2 mx-auto">
             <img src="/logo.png" class="object-contain w-44" alt="">
 
@@ -58,6 +58,8 @@
                 {{-- notifications --}}
                 @livewire('database-notifications')
                 {{-- profile --}}
+
+                @if (auth()->user()->role == 'student')
                 <a href="{{ route('student.profile') }}" class="">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
@@ -66,6 +68,7 @@
                     </svg>
 
                 </a>
+                @endif
 
 
                 {{-- logout --}}
