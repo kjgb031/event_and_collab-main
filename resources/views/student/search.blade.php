@@ -9,14 +9,14 @@
     <h1 class="my-10 text-4xl font-bold text-center">Search Results for "{{ request('q') }}"</h1>
     <section class="container grid grid-cols-1 gap-4 mx-auto my-10 md:grid-cols-2 lg:grid-cols-3">
 
-        @if ($events->isEmpty())
+        @if ($events->isEmpty()&& $organizations->isEmpty())
             <div class="col-span-full min-h-96">
                 <p class="w-full text-center text-gray-600">No events found for "{{ request('q') }}".</p>
             </div>
         @else
             @foreach ($events as $event)
                 <div class="overflow-hidden bg-white rounded-lg shadow-lg">
-                    <img class="object-cover object-center w-full h-56" src="{{ $event->image }}" alt="{{ $event->name }}">
+                    <img class="object-cover object-center w-full h-56" src="{{Storage::url($event->thumbnail)}}" alt="{{ $event->name }}">
 
                     <div class="p-4">
                         <h2 class="text-xl font-bold text-gray-800">{{ $event->name }}</h2>
@@ -30,8 +30,8 @@
             {{-- display organizations --}}
             @foreach ($organizations as $organization)
                 <div class="flex flex-col justify-between overflow-hidden bg-white rounded-lg shadow-lg">
-                    <img class="object-cover object-center w-full h-56" src="{{ $organization->image }}"
-                        alt="{{ $organization->name }}">
+                    <img class="object-cover object-center w-full h-56" src="{{Storage::url($organization->avatar)}}"
+                        alt="{{ $organization->name }}">    
 
                     <div class="p-4">
                         <h2 class="text-xl font-bold text-gray-800">{{ $organization->organization_name }}</h2>
