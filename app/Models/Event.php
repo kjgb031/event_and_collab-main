@@ -80,25 +80,18 @@ class Event extends Model
             ->body("{$this->name} has been approved.")
             ->sendToDatabase($this->user)
             ->send();
-
+        Notification::make()
+            ->title('New Event!')
+            ->success()
+            ->body("{$this->name} a new event has popped up.")
+            ->sendToDatabase(User::where('role','student')->get());
 
 
         $this->update([
             'status' => 'approved',
         ]);
     }
-    protected static function booted()
-{
-    static::created(function ($event) {
-        Notification::make()
-            ->title('New Event!')
-            ->success()
-            ->body("{$event->name} a new event has popped up.")
-            ->sendToDatabase(User::where('role','student')->get())
-            ->send();
-    });
-}
-
+ 
 
     public function reject()
     {
