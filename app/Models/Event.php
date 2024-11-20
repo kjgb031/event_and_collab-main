@@ -87,6 +87,18 @@ class Event extends Model
             'status' => 'approved',
         ]);
     }
+    protected static function booted()
+{
+    static::created(function ($event) {
+        Notification::make()
+            ->title('New Event!')
+            ->success()
+            ->body("{$event->name} a new event has popped up.")
+            ->sendToDatabase(User::where('role','student')->get())
+            ->send();
+    });
+}
+
 
     public function reject()
     {

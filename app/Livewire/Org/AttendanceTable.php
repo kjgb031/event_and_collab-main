@@ -86,6 +86,11 @@ class AttendanceTable extends Component implements HasForms, HasTable
                         ->icon('heroicon-o-check-circle')
                         ->action(fn(EventRegistration $record) => $record->markAsAttended())
                         ->visible(fn(EventRegistration $record) => $record->status === EventRegistration::STATUSES['reserved']),
+                    // show proof of attendance if not null
+                    Action::make('proof_of_attendance')
+                        ->icon('heroicon-o-document')
+                        ->visible(fn($record) => $record-> proof_of_attendance !== null)
+                        ->url(fn($record) => Storage::url($record->proof_of_attendance), true),
                 ]),
             ]);
     }
