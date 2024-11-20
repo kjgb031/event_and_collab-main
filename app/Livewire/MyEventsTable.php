@@ -38,7 +38,7 @@ class MyEventsTable extends Component implements HasForms, HasTable
         return $table
             ->query(
                 Event::query()
-
+                ->where("user_id",auth()->id())
             )
             ->columns([
                 Tables\Columns\Layout\Split::make([
