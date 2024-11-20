@@ -144,6 +144,9 @@
                 {{ $event->date->format('F j, Y') }} <br>
                 {{ \Carbon\Carbon::parse($event->start_time)->format('g:i A') }} -
                 {{ \Carbon\Carbon::parse($event->end_time)->format('g:i A') }} <br>
+                Capacity: {{ $event->capacity }} <br>
+                Event Type: {{ $event->event_type }} <br>
+                Event Mode: {{ $event->event_mode }} <br>
 
 
                 By: {{ $event->user->organization_name }}

@@ -13,6 +13,7 @@ use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Get;
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Filament\Notifications\Actions\Action;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
@@ -84,8 +85,15 @@ class Event extends Model
             ->title('New Event!')
             ->success()
             ->body("{$this->name} a new event has popped up.")
-            ->sendToDatabase(User::where('role','student')->get());
-
+            ->actions([
+                Action::make('view')
+                    ->button()
+                    ->url(route('student.event.show', $this->id), shouldOpenInNewTab: true),
+                Action::make('undo')
+                    ->color('gray'),
+            ])
+            ->sendToDatabase(User::where('role','student')->get())
+            ->send();
 
         $this->update([
             'status' => 'approved',
