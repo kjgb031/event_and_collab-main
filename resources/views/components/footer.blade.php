@@ -28,13 +28,13 @@
                     </h2>
                     <ul class="flex flex-col gap-2">
                         <li class="hover:text-gray-300">
-                            <a href="#">Home</a>
+                            <a href="{{ route('student.dashboard') }}">Home</a>
                         </li>
                         <li class="hover:text-gray-300">
-                            <a href="#">Events</a>
+                            <a href="{{route('student.events')}}">Events</a>
                         </li>
                         <li class="hover:text-gray-300">
-                            <a href="#">Organizations</a>
+                            <a href="{{route('student.organizations')}}">Organizations</a>
                         </li>
                         <li class="hover:text-gray-300">
                             <a href="#">Credits</a>

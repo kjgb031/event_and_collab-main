@@ -10,7 +10,7 @@
             @foreach ($organizations as $organization)
             <a href="{{ route('student.organization.show', $organization) }}">
                 <div class="overflow-hidden transition-transform bg-white rounded-lg shadow-md hover:scale-105">
-                    <img src="{{ $organization->avatar }}" class="object-cover w-full h-48" alt="{{ $organization->name }}">
+                    <img src="{{Storage::url($organization->avatar)}}" class="object-cover w-full h-48" alt="{{ $organization->name }}">
                     <div class="p-4">
                         <h5 class="text-lg font-semibold">{{ $organization->name }}</h5>
                     </div>
@@ -20,5 +20,3 @@
         </div>
     </div>
 @endsection
-
-
