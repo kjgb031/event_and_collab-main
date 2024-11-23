@@ -28,6 +28,22 @@ class OrganizationController extends Controller
             ->where('event_id', $event->id)
             ->first();
 
+        return response()->json(['success' => true, 
+        'student' => $registration->user
+    ]);
+
+
+    }
+
+    public function eventMarkAttended(Request $request, Event $event)
+    {
+        $uid = $request->input('uid');
+
+        // Find the EventRegistration by uid and event_id
+        $registration = EventRegistration::where('uid', $uid)
+            ->where('event_id', $event->id)
+            ->first();
+
         if ($registration && $registration->status != EventRegistration::STATUSES['attended']) {
             // Mark as attended
             $registration->markAsAttended();
@@ -41,7 +57,6 @@ class OrganizationController extends Controller
 
             return response()->json(['success' => true, 'message' => 'Attendee marked as attended.']);
         }
-
         return response()->json(['success' => false, 'message' => 'Invalid UID or attendee already marked as attended.'], 400);
     }
 }

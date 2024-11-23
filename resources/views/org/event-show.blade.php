@@ -32,11 +32,17 @@
             </div>
         </div>
 
+        <div id="student-info" class="hidden">
+            <h2 id="student-name"></h2>
+            <p id="student-email"></p>
+            <button id="mark-attended-btn" class="btn btn-primary">Mark as Attended</button>
+        </div>
+
         <section class="my-6">
             @livewire('org.event-form', ['event' => $event])
         </section>
-     
-        
+
+
         <section class="my-6">
             @livewire('org.attendance-table', ['event' => $event])
         </section>
@@ -49,7 +55,9 @@
 
 @push('scripts')
     {{-- Include QR code scanning library --}}
-    <script src="https://unpkg.com/html5-qrcode"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js"
+        integrity="sha512-r6rDA7W6ZeQhvl8S7yRVQUKVHdexq+GAlNkNNqVC7YyIV+NwqCTJe2hDWCiffTyRNOeGEzRRJ9ifvRm/HCzGYg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         let html5QrcodeScanner;
 
@@ -58,33 +66,70 @@
             document.getElementById('scan-modal').classList.remove('hidden');
 
             html5QrcodeScanner = new Html5QrcodeScanner(
-                "qr-reader", { fps: 10, qrbox: 250 });
+                "qr-reader", {
+                    fps: 10,
+                    qrbox: 250
+                });
 
             function onScanSuccess(decodedText, decodedResult) {
                 // Send the scanned UID to the eventScan route
                 fetch("{{ route('organization.event.scan', $event) }}", {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                    },
-                    body: JSON.stringify({ uid: decodedText })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    alert(data.message);
-                    // Close the scanner
-                    html5QrcodeScanner.clear();
-                    document.getElementById('scan-modal').classList.add('hidden');
-                })
-                .catch(error => {
-                    alert('An error occurred');
-                });
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        },
+                        body: JSON.stringify({
+                            uid: decodedText
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Show the student information
+                            document.getElementById('student-name').textContent = data.student.name;
+                            document.getElementById('student-email').textContent = data.student.email;
+                            document.getElementById('student-info').classList.remove('hidden');
+
+                            // Add event listener to the mark as attended button
+                            document.getElementById('mark-attended-btn').addEventListener('click', function() {
+                                // Send the mark as attended request
+                                fetch("{{ route('organization.event.mark-attended', $event) }}", {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                                        },
+                                        body: JSON.stringify({
+                                            uid: decodedText
+                                        })
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        alert(data.message);
+                                        // Close the scanner
+                                        html5QrcodeScanner.clear();
+                                        document.getElementById('scan-modal').classList.add(
+                                            'hidden');
+                                    })
+                                    .catch(error => {
+                                        alert('An error occurred');
+                                    });
+                            });
+                        } else {
+                            alert(data.message);
+                        }
+                    })
+                    .catch(error => {
+                        alert('An error occurred');
+                    });
             }
 
             function onScanError(errorMessage) {
                 // handle scan error
                 console.error(errorMessage);
+                // Hide the student information
+                document.getElementById('student-info').classList.add('hidden');
             }
 
             html5QrcodeScanner.render(onScanSuccess, onScanError);

@@ -90,6 +90,7 @@ Route::prefix('organization')->group(function () {
         Route::get('/dashboard', [OrganizationController::class, 'dashboard'])->name('organization.dashboard');
         Route::get('/events/{event}', [OrganizationController::class, 'eventShow'])
             ->name('organization.event.show');
+        Route::get('/events/{event}/mark-attended', [OrganizationController::class, 'eventMarkAttended'])->name('organization.event.mark-attended');
         Route::get('/appointments/{appointment}', [OrganizationController::class, 'appointmentShow'])
             ->name('organization.appointment.show');
         Route::post('/events/{event}/scan', [OrganizationController::class, 'eventScan'])
