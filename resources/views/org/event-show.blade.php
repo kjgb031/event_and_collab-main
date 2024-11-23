@@ -32,10 +32,12 @@
             </div>
         </div>
 
-        <div id="student-info" class="hidden">
-            <h2 id="student-name"></h2>
-            <p id="student-email"></p>
-            <button id="mark-attended-btn" class="btn btn-primary">Mark as Attended</button>
+        <div id="student-info" class="fixed inset-0 z-10 items-center justify-center hidden bg-gray-900 bg-opacity-50">
+            <div class="p-4 bg-white rounded shadow-md">
+                <h2 id="student-name" class="text-xl font-bold"></h2>
+                <p id="student-email" class="text-gray-700"></p>
+                <button id="mark-attended-btn" class="mt-4 btn btn-primary">Mark as Attended</button>
+            </div>
         </div>
 
         <section class="my-6">
@@ -62,6 +64,7 @@
         let html5QrcodeScanner;
 
         document.getElementById('scan-btn').addEventListener('click', function() {
+            console.log('Scan button clicked');
             // Open the modal
             document.getElementById('scan-modal').classList.remove('hidden');
 
@@ -72,6 +75,7 @@
                 });
 
             function onScanSuccess(decodedText, decodedResult) {
+                console.log(`Scan result: ${decodedText}`);
                 // Send the scanned UID to the eventScan route
                 fetch("{{ route('organization.event.scan', $event) }}", {
                         method: 'POST',
@@ -86,10 +90,13 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
+                            console.log(data.student);
                             // Show the student information
                             document.getElementById('student-name').textContent = data.student.name;
                             document.getElementById('student-email').textContent = data.student.email;
                             document.getElementById('student-info').classList.remove('hidden');
+                            //add flex
+                            document.getElementById('student-info').classList.add('flex', 'flex-col', 'items-center');
 
                             // Add event listener to the mark as attended button
                             document.getElementById('mark-attended-btn').addEventListener('click', function() {
@@ -117,6 +124,7 @@
                                     });
                             });
                         } else {
+                            console.log(data.message);
                             alert(data.message);
                         }
                     })
