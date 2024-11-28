@@ -92,14 +92,14 @@ class Event extends Model
                 Action::make('undo')
                     ->color('gray'),
             ])
-            ->sendToDatabase(User::where('role','student')->get())
+            ->sendToDatabase(User::where('role', 'student')->get())
             ->send();
 
         $this->update([
             'status' => 'approved',
         ]);
     }
- 
+
 
     public function reject()
     {
@@ -200,6 +200,11 @@ class Event extends Model
                     ->columnSpanFull(),
             ])->columns(2),
         ];
+    }
+
+    public function isOver()
+    {
+        return $this->date->isPast();
     }
 
 

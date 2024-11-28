@@ -61,7 +61,7 @@ class EventActionButtons extends Component implements HasForms, HasActions
     {
         return Action::make('reserve')
             ->label($this->event->getEventButtonLabel())
-            ->disabled(fn() => User::find(auth()->id())->isReserved($this->event) || $this->event->isFull())
+            ->disabled(fn() => User::find(auth()->id())->isReserved($this->event) || $this->event->isFull() || $this->event->isOver())
             ->icon('heroicon-o-calendar')
             ->form([
                 FileUpload::make('proof_of_payment')
