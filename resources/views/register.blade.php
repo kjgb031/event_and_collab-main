@@ -70,11 +70,100 @@
                 // Hardcoded campus data for demonstration purposes
                 const campusData = {
 
+<<<<<<< Updated upstream
                     //Abucay
                     "Abucay": {
                         "colleges": ["College of Agriculture and Fisheries", "College of Education",
                             "Institute Of Agricultural And Biosystems Engineering"
                         ],
+=======
+                        //Abucay
+                        "Abucay": {
+                            "colleges": ["College of Agriculture and Fisheries ", "College of Education", "Institute Of Agricultural And Biosystems Engineering"],
+
+                            "programs": {
+                                "College of Agriculture and Fisheries": ["Bachelor of Science in Agriculture"],
+                                "College of Education": ["Bachelor of Technical-Vocational Teacher Education"],
+                                "Institute Of Agricultural And Biosystems Engineering": ["Bachelor of Science in Agricultural and Biosystems Engineering" ]
+                            },
+
+                            "majors": {
+                                "Bachelor of Science in Agriculture": ["Animal Science", "Crop Science"],
+                                "Bachelor of Technical-Vocational Teacher Education": ["Agricultural Crops Production","Animal Production"],
+                                "Bachelor of Science in Agricultural and Biosystems Engineering": ["Not Applicable"]
+                            }
+                        },
+
+                        //Balanga
+                        "Balanga": {
+                            "colleges": ["College of Business and Accountancy", "College of Education", "College of Social and Behavioral Sciences", "Institute of Public Administration and Governance"
+                            ],
+
+                            "programs": {
+                                "College of Business and Accountancy": ["Bachelor of Science in Accountancy",
+                                    "Bachelor of Science in Business Administration"
+                                ],
+                                "College of Education": ["Bachelor of Secondary Education"],
+                                "College of Social and Behavioral Sciences": ["Bachelor of Arts in Psychology",
+                                    "Bachelor of Science in Psychology"
+                                ],
+                                "Institute of Public Administration and Governance": ["Bachelor of Public Administration"]
+                            },
+
+                            "majors": {
+                                "Bachelor of Science in Accountancy": ["Not Applicable"],
+                                "Bachelor of Science in Business Administration": ["Human Resource Management",
+                                    "Marketing Management", "Operations Management"
+                                ],
+                                "Bachelor of Secondary Education": ["English", "Filipino", "Social Studies"],
+                                "Bachelor of Arts in Psychology": ["Not Applicable"],
+                                "Bachelor of Science in Psychology": ["Not Applicable"],
+                                "Bachelor of Public Administration": ["Not Applicable"]
+                            }
+                        },
+
+                        "Bagac": {
+                            "colleges": ["College of Health Sciences", "College of Nursing"],
+
+                            "programs": {
+                                "College of Health Sciences": ["Bachelor of Science in Nursing",
+                                    "Bachelor of Science in Health Sciences"
+                                ],
+                                "College of Nursing": ["Bachelor of Science in Nursing", "Bachelor of Science in Health Sciences"]
+                            },
+
+                            "majors": {
+                                "Bachelor of Science in Nursing": ["Nursing", "Health Sciences"],
+                                "Bachelor of Science in Health Sciences": ["Health Sciences", "Health Administration"],
+                                "Bachelor of Science in Nursing": ["Nursing", "Health Sciences"],
+                                "Bachelor of Science in Health Sciences": ["Health Sciences", "Health Administration"]
+                            }
+                        },
+
+                        "Dinalupihan": {
+                            "colleges": ["College of Arts and Sciences", "College of Business and Entrepreneurship"],
+
+                            "programs": {
+                                "College of Arts and Sciences": ["Bachelor of Arts in Communication",
+                                    "Bachelor of Arts in English"
+                                ],
+                                "College of Business and Entrepreneurship": ["Bachelor of Science in Business Administration",
+                                    "Bachelor of Science in Entrepreneurship"
+                                ]
+                            }
+                        }
+                    },
+
+                    "majors": {
+                        "Bachelor of Arts in Communication": ["Broadcasting", "Journalism"],
+                        "Bachelor of Arts in English": ["Creative Writing", "Literature"],
+                        "Bachelor of Science in Business Administration": ["Management", "Marketing"],
+                        "Bachelor of Science in Entrepreneurship": ["Entrepreneurship", "Small Business Management"]
+                    },
+
+                    "Main": {
+                        "colleges": ["College of Arts and Sciences", "College of Business and Entrepreneurship"],
+>>>>>>> Stashed changes
 
                         "programs": {
                             "College of Agriculture and Fisheries": ["Bachelor of Science in Agriculture"],
